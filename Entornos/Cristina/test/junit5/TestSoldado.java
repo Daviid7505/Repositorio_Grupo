@@ -68,7 +68,7 @@ import Clases.Soldado;
 	    
 	    /**
 	     * El test para el metodo disparar
-	     * primera prueba el sodado tiene un numero positivo mayor que 0
+	     * primera prueba el sodado tiene un numero asignado positivo mayor que 0
 	     * En la segunda prueba le asignamos 0 para el numero de balas
 	     */
 	    

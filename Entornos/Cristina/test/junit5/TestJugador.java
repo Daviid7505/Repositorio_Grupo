@@ -48,21 +48,21 @@ class TestJugador {
 		int resultadorEsperado1 = 13; 
 		int resultadoObtenido1 = jugador.getDorsal();
 		
-		assertEquals(13, 13) ;
+		assertEquals(resultadorEsperado1,resultadoObtenido1  ) ;
 		
-		//En la segunda prueba, comprobamos que nos devuelve -1 al asignar un número menor que 1
+		
 		jugador.setDorsal(40);
 		int resultadorEsperado2 = 40; 
 		int resultadoObtenido2 = jugador.getDorsal();
 		
-		assertEquals(-1, -1) ;
+		assertEquals(resultadorEsperado2,resultadoObtenido2) ;
 		
-		//En la tercera prueba, comprobamos que nos devuelve -1 al asignar un número mayor a 30
+		
 		jugador.setDorsal(-3);
 		int resultadorEsperado3 = -3; 
 		int resultadoObtenido3 = jugador.getDorsal();
 			
-		assertEquals(-1, -1) ;
+		assertEquals(resultadorEsperado3,resultadoObtenido3 ) ;
 		}
 		
 		/**
@@ -90,6 +90,7 @@ class TestJugador {
 				assertTrue(jugador.estaExpulsado());
 			
 		}
+		 @Test
 		 void testNoEstaExpulsado(){
 			 
 			jugador.setNumeroTarjetasAmarillas(3);

@@ -18,8 +18,76 @@ CREATE TABLE `AV` (
 `Fechainicio` DATE ,
 `FechaFin` DATE);
 
+<<<<<<< HEAD
 CREATE TABLE `EXCURSION` (
 `CodExcursion` int (5) NOT NULL,
+=======
+--
+-- Estructura de tabla para la tabla `ParqueNatural`:
+--
+
+create table `ParqueNatural` (
+`CodPN` int(5) COMMENT 'Còdigo del Parque Natural',
+`Nombre` varchar(20) COMMENT 'Nombre del PN',
+`FechaDeclaracion` DATE COMMENT 'Fecha de declaración del PN');
+
+--
+-- Estructura de tabla para la tabla `E-A`:
+--
+
+create table `E-A` (
+`CodEspecie` int(10) COMMENT 'Código de la especie del PN',
+`CodArea` varchar(20) COMMENT 'Código de área del PN',
+`CantIndividuos` int(10) COMMENT 'Cantidad de individuos de la especie');
+
+--
+-- Estructura de tabla para la tabla `Area`:
+--
+
+CREATE TABLE `Area`(
+	`NombreA` varchar (15),
+    `Extensión km` int (10),
+    `CodPN` int (5)
+);
+
+--
+-- Estructura de tabla para la tabla `Vehiculo`:
+--
+
+CREATE TABLE `Vehiculo`(
+	`Matricula` varchar (10),
+    `Tipo` varchar (25),
+    `DNI` char (9)
+);
+
+--
+-- Estructura de tabla para la tabla `I-P`:
+--
+
+CREATE TABLE `I-P` (
+  `CodProy` int(4) COMMENT 'Codigo de proyecto',
+  `DNI` char(9) COMMENT 'DNI'
+);
+
+--
+-- Estructura de tabla para la tabla `Proyecto`:
+--
+
+CREATE TABLE `Proyecto` (
+  `CodProy` int(4) COMMENT 'Codigo de proyecto',
+  `Presupuesto` int(5) COMMENT 'Presupuesto',
+  `FechaInicio` date COMMENT 'Fecha de inicio del pro',
+  `FechaFin` date COMMENT 'Fecha de fin del proyecto',
+  `CodEspecie` int(4) COMMENT 'Código de especie'
+);
+
+--
+-- Estructura de tabla para la tabla `Excursion`:
+--
+
+CREATE TABLE `Excursion` (
+`CodExcursion` int(5) NOT NULL,
+>>>>>>> 2c567304f42259c0a00d892cebe2fa933c609aef
 `Fecha` DATE,
 `Hora` TIME,
 `aPIE` int(5) DEFAULT NULL,

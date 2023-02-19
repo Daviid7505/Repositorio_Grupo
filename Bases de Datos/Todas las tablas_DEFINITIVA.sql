@@ -136,7 +136,7 @@ CREATE TABLE `Area`(
 --
 
 CREATE TABLE `Vehiculo`(
-	`Matrícula` varchar (10),
+	`Matricula` varchar (10),
     `Tipo` varchar (25),
     `DNI` char (9)
 );

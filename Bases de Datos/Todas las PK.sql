@@ -4,7 +4,7 @@
 alter table `Visitante` add primary key (`DNI`);
 
 -- Creamos la PK de ComunidadAutónoma
-alter table `ComunidadAutónoma` add primary key (`CodCA`);
+alter table `ComunidadAutonoma` add primary key (`CodCA`);
 
 -- Creamos la PK de Especie
 alter table `Especie` add primary key (`CodEspecie`);
@@ -25,7 +25,7 @@ alter table `ParqueNatural` add primary key (`CodPN`);
 alter table `Area` add primary key (`NombreA`);
 
 -- Creamos la PK de Vehículo
-alter table `Vehiculo` add primary key (`Matrícula`);
+alter table `Vehiculo` add primary key (`Matricula`);
 
 -- Creamos la PK de Proyecto
 alter table `Proyecto` add primary key (`CodProy`);

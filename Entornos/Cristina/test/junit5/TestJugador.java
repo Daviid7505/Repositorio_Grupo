@@ -40,7 +40,7 @@ class TestJugador {
 		 * 
 		 *En la tercera prueba se le asigna un valor negativo que es menor que 1
 		 */
-	
+
 		@Test
 		void testPonerDorsal() {
 		jugador.setDorsal(13);

@@ -66,7 +66,11 @@ import Clases.Soldado;
 	   	}
 	    
 	    
-	    
+	    /**
+	     * El test para el metodo disparar
+	     * primera prueba el sodado tiene un numero positivo mayor que 0
+	     * En la segunda prueba le asignamos 0 para el numero de balas
+	     */
 	    
 	    @Test
 	    void disparar()  {
@@ -74,11 +78,23 @@ import Clases.Soldado;
 	     Soldado sol2 = new Soldado();
 	    	 
 	    	 sol1.setNumeroBalas(5);
-	    	
 	    	 sol2.setEstaMuerto(false);
 	         sol1.setEstaMuerto(false);
 	         sol1.disparar(sol2);
 	     assertTrue(sol2.isEstaMuerto());
 	    	  
 	    }
-}
+	    
+	    @Test
+	    void disparar1()  {
+	     Soldado sol1 = new Soldado();
+	     Soldado sol2 = new Soldado();
+	    	 
+	    	 sol1.setNumeroBalas(0);
+	    	 sol2.setEstaMuerto(true);
+	         sol1.setEstaMuerto(true);
+	         sol1.disparar(sol2);
+	     assertTrue(sol2.isEstaMuerto());
+	    	  
+	    }
+} 

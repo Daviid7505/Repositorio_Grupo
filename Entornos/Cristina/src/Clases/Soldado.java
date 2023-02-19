@@ -57,7 +57,7 @@ public class Soldado {
 		/**
 		 * metodo que indica que en cuanto la cantidad de balas decrementa
 		 *  es decir el soldado efectua disparos ,otro soldado muere
-		 * @param sol 
+		 * @param sol soldadodo que crearemos para que reciba disparos
 		 */
 		public void disparar(Soldado sol)  {
 			this.numeroBalas --;

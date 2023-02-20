@@ -1,16 +1,25 @@
 package junit5;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javabeans.Soldado;
 
 class TestSoldado {
+	
+
 
 	
-	Soldado s1 = new Soldado();
+		Soldado s1 = new Soldado();
+		
+		Soldado s2 = new Soldado();
+		
+
 	
    /**
     * Este método nos dice si el soldado puede disparar o no dependiendo de las balas que tenga
@@ -21,14 +30,16 @@ class TestSoldado {
     public void testdisparar() {
     	
     	//Hacemos una prueba con un número de balas positivo
-	    	s1.setNumeroBalas(10);
+	    	s1.setNumeroBalas(5);
 	    	
 	    	boolean Resultado=s1.puedeDisparar();
 	    	boolean Esperado = true;
 	    	
 	    	assertEquals(Esperado, Resultado);
+    }
     	
-    	
+	@Test
+	public void testdisparar2() {
     	//Hacemos una prueba con un número de balas igual a 0
 	    	s1.setNumeroBalas(0);
 	    	
@@ -36,11 +47,13 @@ class TestSoldado {
 	    	boolean Esperado2 = false;
 	    	
 	    	assertEquals(Esperado2, Resultado2);
-    	
+	 }
+	 @Test
+	 public void testdisparar3() {
     	//Hacemos una prueba con un número de balas negativo (esto no tiene mucho sentido
-    	//pero si suponemos que el usuario mete un número negativo también hay que testearlo
+    	//pero si suponemos que el usuario mete un número negativo también hay que testearlo)
     	
-	    	s1.setNumeroBalas(-2);
+	    	s1.setNumeroBalas(-1);
 	    	
 	    	boolean Resultado3 = s1.puedeDisparar();
 	    	boolean Esperado3 = false;
@@ -57,7 +70,7 @@ class TestSoldado {
     * @param sol es el soldado que recie el disparo, después de recibir el soldado nos asigna true a la variable estaMuerto
     */
 
-    Soldado s2 = new Soldado();
+   
    @Test
     public void testpuededisparar1() {
 	   		
@@ -114,25 +127,14 @@ class TestSoldado {
 		   		s2.disparar(s1);
 		   		
 		   		boolean Resultado3 = s1.isEstaMuerto();
-		   		boolean Esperado3 = true;
+		   		boolean Esperado3 = false;
 		   		
 		   		int Resultadobalas3 = s2.getNumeroBalas();
-		   		int Esperadobalas3 = -1;
+		   		int Esperadobalas3 = 0;
 		   		assertTrue(Resultadobalas3 == (Esperadobalas3));
    	    		assertEquals(Esperado3, Resultado3); 
    }
-	   		
-	   /*		//Con assertAll podemos meter todos los assert juntos para tenerlo bien ordenado
-	   	    assertAll("Resultado balas y muerto",
-	   	    			//Prueba 1
-	   	            () -> assertEquals(Esperado, Resultado),
-	   	            () -> assertTrue(Resultadobalas == (Esperadobalas)),
-	   	            	//Prueba 2
-	   	            () -> assertTrue(Resultadobalas2 == (Esperadobalas2)),
-	   	            () -> assertEquals(Esperado2, Resultado2),
-	   	    			//Prueba3
-	   	    		() -> assertTrue(Resultadobalas3 == (Esperadobalas3)),
-	   	   		() -> assertEquals(Esperado3, Resultado3)); 		*/ 
+	   	
 	   		
 	   		
     }

@@ -1,6 +1,7 @@
 package junit5_Alberto;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +27,7 @@ class TestSoldado {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		// Después de cada test elimino los dos objeto soldado
+		// Despuï¿½s de cada test elimino los dos objeto soldado
 		sol1 = null;
 		sol2 = null;
 	}

@@ -51,7 +51,8 @@ class TestSoldado {
 
 		assertFalse(sol1.puedeDisparar());
 	}
-	// Cuando el numero de balas es negativo el objeto soldado no puede disparar.
+	// Cuando el numero de balas es cero o negativo el objeto soldado no puede
+	// disparar.
 
 	/**
 	 * En esta prueba unitaria vamos a probar el metodo "disparar" que como afecta a

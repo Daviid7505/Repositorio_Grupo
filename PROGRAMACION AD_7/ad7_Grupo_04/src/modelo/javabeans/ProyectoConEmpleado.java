@@ -1,21 +1,23 @@
 package modelo.javabeans;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class ProyectoConEmpleado {
-	
-	// Definimos los atributos para la clase ProyectosConEmpleado que se corresponden con los
-	//que aparecen en la BBDD
-	
+
+	// Definimos los atributos para la clase ProyectosConEmpleado que se
+	// corresponden con los
+	// que aparecen en la BBDD
+
 	int numeroOrden;
 	Proyecto proyecto;
 	Empleado empleado;
 	int horasAsignadas;
-	String fechaIncorporacion;
-	
+	Date fechaIncorporacion;
+
 	// Definimos el método constructor con todos los parámetros
 	public ProyectoConEmpleado(int numeroOrden, Proyecto proyecto, Empleado empleado, int horasAsignadas,
-			String fechaIncorporacion) {
+			Date fechaIncorporacion) {
 		super();
 		this.numeroOrden = numeroOrden;
 		this.proyecto = proyecto;
@@ -23,13 +25,13 @@ public class ProyectoConEmpleado {
 		this.horasAsignadas = horasAsignadas;
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
-	
+
 	// Definimos el método constructor sin parámetros
 	public ProyectoConEmpleado() {
 		super();
 	}
-	
-	//Generamos los getters and setters
+
+	// Generamos los getters and setters
 	public int getNumeroOrden() {
 		return numeroOrden;
 	}
@@ -62,16 +64,17 @@ public class ProyectoConEmpleado {
 		this.horasAsignadas = horasAsignadas;
 	}
 
-	public String getFechaIncorporacion() {
+	public Date getFechaIncorporacion() {
 		return fechaIncorporacion;
 	}
 
-	public void setFechaIncorporacion(String fechaIncorporacion) {
+	public void setFechaIncorporacion(Date fechaIncorporacion) {
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
 
-	//Generamos equals y hashcode, en los cuales definimos que dos ProyectoConEmpleado son iguales 
-	//si tienen el mismo numeroOrden
+	// Generamos equals y hashcode, en los cuales definimos que dos
+	// ProyectoConEmpleado son iguales
+	// si tienen el mismo numeroOrden
 	@Override
 	public int hashCode() {
 		return Objects.hash(numeroOrden);
@@ -88,7 +91,5 @@ public class ProyectoConEmpleado {
 		ProyectoConEmpleado other = (ProyectoConEmpleado) obj;
 		return numeroOrden == other.numeroOrden;
 	}
-	
-	
 
 }

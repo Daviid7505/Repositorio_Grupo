@@ -87,6 +87,21 @@ public class Cliente {
 		return Objects.hash(cif);
 	}
 
+	
+	
+	
+	
+	
+	
+	//REDEFINIMOS TO STRING
+	@Override
+	public String toString() {
+		return "Cliente [cif=" + cif + ", nombre=" + nombre + ", apellidos=" + apellidos + ", domicilio=" + domicilio
+				+ ", facturacionAnual=" + facturacionAnual + ", numeroEmpleados=" + numeroEmpleados + "]";
+	}
+	
+	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

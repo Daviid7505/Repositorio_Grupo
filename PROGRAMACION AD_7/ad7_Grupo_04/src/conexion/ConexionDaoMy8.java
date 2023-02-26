@@ -12,7 +12,7 @@ public class ConexionDaoMy8 {
 	private static String password;
 	private static Connection conn;
 	
-	//Creamos el método para la conexión con la BBDD
+	//Creamos el mï¿½todo para la conexiï¿½n con la BBDD
 	private ConexionDaoMy8() {
 		url="jdbc:mysql://localhost:3306/banco_fp_23?serverTimezone=UTC";
 		user="root";
@@ -20,11 +20,11 @@ public class ConexionDaoMy8 {
 		
 	try {
 		conn=DriverManager.getConnection(url, user, password);
-		System.out.println("Conexión establecida");
+		System.out.println("Conexiï¿½n establecida");
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
-		System.out.println("Conexión no establecida");
+		System.out.println("Conexiï¿½n no establecida");
 		}
 	}
 	public static Connection getConexion() {

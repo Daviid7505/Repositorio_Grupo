@@ -14,14 +14,16 @@ public class Proyecto {
 	String fechaFinReal;
 	double ventasPrevisto;
 	double costesPrevisto;
+	double costeReal;
 	String estado;
 	int jefeProyecto;
 	Empleado empleado;
 	
 	//Generamos el método constructor con todos los parámetros
+	
 	public Proyecto(String idProyecto, String descripcion, String fechaInicio, String fechaFinPrevisto,
-			String fechaFinReal, double ventasPrevisto, double costesPrevisto, String estado, int jefeProyecto,
-			Empleado empleado) {
+			String fechaFinReal, double ventasPrevisto, double costesPrevisto, double costeReal, String estado,
+			int jefeProyecto, Empleado empleado) {
 		super();
 		this.idProyecto = idProyecto;
 		this.descripcion = descripcion;
@@ -30,11 +32,12 @@ public class Proyecto {
 		this.fechaFinReal = fechaFinReal;
 		this.ventasPrevisto = ventasPrevisto;
 		this.costesPrevisto = costesPrevisto;
+		this.costeReal = costeReal;
 		this.estado = estado;
 		this.jefeProyecto = jefeProyecto;
 		this.empleado = empleado;
 	}
-	
+
 	//Generamos el método constructor sin parámetros
 	public Proyecto() {
 		super();
@@ -96,6 +99,14 @@ public class Proyecto {
 	public void setCostesPrevisto(double costesPrevisto) {
 		this.costesPrevisto = costesPrevisto;
 	}
+	
+	public double getCosteReal() {
+		return costeReal;
+	}
+
+	public void setCosteReal(double costeReal) {
+		this.costeReal = costeReal;
+	}
 
 	public String getEstado() {
 		return estado;
@@ -140,7 +151,29 @@ public class Proyecto {
 		return Objects.equals(idProyecto, other.idProyecto);
 	}
 	
+	//Métodos propios de proyectos
 	
+	//Definimos el método que calcula y retorna el margen de las ganancias.
+	
+	public double margenPrevisto() {
+	Factura factura = new Factura();
+	double importeVenta=0;
+	double margen =  importeVenta- costesPrevisto;
+	
+	return margen;
+	}
+	
+	public double margenReal() {
+	Factura factura = new Factura();
+	double importeVenta=0;
+	double mreal = importeVenta - costeReal;
+	
+	return mreal;
+	}
+	
+	
+	
+	}
 	
 
-}
+

@@ -1,14 +1,17 @@
 package modelo.daojdbc;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.PopupFactory;
 
 import modelo.javabeans.Perfil;
 
 public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	
-	/*Sobreescribimos el método altaPerfil. A travès de este método insertamos en la
-	* en la BBDD un nuevo perfil. Una vez dado de lata, retornará la fila con los datos
+	/*Sobreescribimos el mï¿½todo altaPerfil. A travï¿½s de este mï¿½todo insertamos en la
+	* en la BBDD un nuevo perfil. Una vez dado de lata, retornarï¿½ la fila con los datos
 	* del perfil agregado.
 	*/
 	 
@@ -33,8 +36,8 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 		return filas;
 	}
 	
-	/*Sobreescribimos el método eliminarUno. En este me´todo se elimina un perfil
-	 * pasando por parámetro el id del perfil que se desea eliminar.
+	/*Sobreescribimos el mï¿½todo eliminarUno. En este meï¿½todo se elimina un perfil
+	 * pasando por parï¿½metro el id del perfil que se desea eliminar.
 	 */
 	@Override
 	public int eliminarUno(int idPerfil) {
@@ -53,8 +56,8 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 		return filas;
 	}
 	
-	/*Sobreescribimos el método modificarUno, el cual modifica los datos del perfil en 
-	 * la BBDD, pasándole los parámetros. El método retorna la fila la modificación. 
+	/*Sobreescribimos el mï¿½todo modificarUno, el cual modifica los datos del perfil en 
+	 * la BBDD, pasï¿½ndole los parï¿½metros. El mï¿½todo retorna la fila la modificaciï¿½n. 
 	 */
 	@Override
 	public int modificarUno(Perfil perfil) {
@@ -73,17 +76,61 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	}
 	return filas;
 	}
+	
 
+	/*Sobreescribimos el mÃ©todo buscarTodos. En este mÃ©todo devuelva una lista con tosos los 
+	 * perfiles existentes en la BBDD.
+	 */
 	@Override
 	public List<Perfil> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+	sql = " select from perfiles ";
+	List<Perfil> lista = new ArrayList<>();
+	
+			
+	try {
+		ps = conn.prepareStatement(sql);
+		rs = ps.executeQuery();
+	
+		while(rs.next()) {
+		Perfil pf = new Perfil();
+		
+		pf.setIdPerfil(rs.getInt("id_perfil"));
+		pf.setNombre(rs.getString("nombre"));
+		lista.add(pf);
+		
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return lista;
 	}
 
+	
+	/*Sobreescribimos el mÃ©todo buscarUno. Este mÃ©todo devuelve la fila que contiene el 
+	 * id_perfil que le pasamos por parÃ¡metro.  
+	 */
 	@Override
 	public Perfil buscarUno(int idPerfil) {
-		// TODO Auto-generated method stub
-		return null;
+	sql = "select from perfiles where id_perfil = ?";
+	Perfil perfil = null;
+	
+	
+	try {
+	ps = conn.prepareStatement(sql);
+	ps.setInt(1, idPerfil);
+	rs = ps.executeQuery();
+	
+	if (rs.next()) {
+	perfil = new Perfil();
+	perfil.setIdPerfil(rs.getInt("id_perfil"));
+	perfil.setNombre(rs.getNString("nombre"));
+	}
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		return perfil;
 	}
 
 }

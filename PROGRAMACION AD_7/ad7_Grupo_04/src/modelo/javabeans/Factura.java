@@ -12,12 +12,14 @@ public class Factura {
 	Proyecto proyecto;
 	
 	//Generamos el método constructor con todos los parámetros
-	public Factura(String idFactura, String descripcion, Proyecto proyecto) {
+	
+	public Factura(String idFactura, String descripcion,Proyecto proyecto) {
 		super();
 		this.idFactura = idFactura;
 		this.descripcion = descripcion;
 		this.proyecto = proyecto;
 	}
+
 	
 	//Generamos el método constructor sin parámetros
 	public Factura() {
@@ -40,14 +42,14 @@ public class Factura {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+	
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
 
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
-	}
+		}
 	
 	//Generamos equals y hashcode, en los cuales definimos que dos facturas son iguales si
 	//tienen el mismo idFactura

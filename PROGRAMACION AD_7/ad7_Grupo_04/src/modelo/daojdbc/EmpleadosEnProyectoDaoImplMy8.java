@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import modelo.javabeans.EmpleadosEnProyecto;
+import modelo.javabeans.Proyecto;
 
 public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadosEnProyectoDao {
 
@@ -45,8 +46,25 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public EmpleadosEnProyecto buscarUno(int numeroOrden) {
-		// TODO Auto-generated method stub
-		return null;
+		sql = "select * from proyecto_con_empleados where numero_orden = ?";
+		EmpleadosEnProyecto eep = null;
+		Proyecto pdao = new ProyectoDaoImplMy8();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, numeroOrden);
+			// alimento el interrogante
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				// si existen monta el objeto
+				eep = new EmpleadosEnProyecto();
+				eep.setNumeroOrden(rs.getInt("numero_orden"));
+				eep.set(rs.getString("nombre"));
+				eep.setDireccion(rs.getString("direccion"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dep;
 	}
 
 	@Override

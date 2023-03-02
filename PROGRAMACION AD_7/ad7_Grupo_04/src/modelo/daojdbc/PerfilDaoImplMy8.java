@@ -114,8 +114,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	public Perfil buscarUno(int idPerfil) {
 	sql = "select from perfiles where id_perfil = ?";
 	Perfil perfil = null;
-	
-	
+		
 	try {
 	ps = conn.prepareStatement(sql);
 	ps.setInt(1, idPerfil);

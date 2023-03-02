@@ -9,14 +9,17 @@ public class Perfil {
 	
 	int idPerfil;
 	String nombre;
+	double precio_hora;
 	
 	//Definimos los constructores de la clase con todos los parámetros
-	public Perfil(int idPerfil, String nombre) {
+	
+	public Perfil(int idPerfil, String nombre, double precio_hora) {
 		super();
 		this.idPerfil = idPerfil;
 		this.nombre = nombre;
+		this.precio_hora = precio_hora;
 	}
-	
+
 	//Definimos el constructor sin parámetros
 	public Perfil() {
 		super();
@@ -39,7 +42,20 @@ public class Perfil {
 		this.nombre = nombre;
 	}
 	
+	public double getPrecio_hora() {
+		return precio_hora;
+	}
+
+	public void setPrecio_hora(double precio_hora) {
+		this.precio_hora = precio_hora;
+	}
 	
+	//Método toString
+	@Override
+	public String toString() {
+		return "Perfil [idPerfil=" + idPerfil + ", nombre=" + nombre + ", precio_hora=" + precio_hora + "]";
+	}
+
 	//Generamos equals y hashcode, en el cual definimos que dos departamentos son iguales si
 	//tienen el mismo idPerfil
 	@Override

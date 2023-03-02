@@ -4,15 +4,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.javabeans.Departamento;
 import modelo.javabeans.Empleado;
 
 public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 
 	/*
-	 * Sobreescribimos el método altaEmpleado. A través de este método, se inserta
-	 * un empleado utilizando Eclipse y se refleja en la BBDD. Como el método arroja
-	 * una excepción, dentro de try definimos las sentencias SQL que pueden causar
-	 * la excepción En catch, definimos la respuesta que daremos a dicha excepción.
+	 * Sobreescribimos el mï¿½todo altaEmpleado. A travï¿½s de este mï¿½todo, se inserta
+	 * un empleado utilizando Eclipse y se refleja en la BBDD. Como el mï¿½todo arroja
+	 * una excepciï¿½n, dentro de try definimos las sentencias SQL que pueden causar
+	 * la excepciï¿½n En catch, definimos la respuesta que daremos a dicha excepciï¿½n.
 	 */
 	@Override
 	public int altaEmpleado(Empleado empleado) {
@@ -24,13 +25,14 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			ps.setInt(1, empleado.getIdEmpl());
 			ps.setString(2, empleado.getNombre());
 			ps.setString(3, empleado.getApellidos());
-			ps.setString(4, empleado.getEmail());
-			ps.setString(5, empleado.getPassword());
-			ps.setDouble(6, empleado.getSalario());
-			ps.setString(7, empleado.getFechaIngreso());
-			ps.setString(8, empleado.getFechaNacimiento());
-			ps.setInt(9, empleado.getPerfil().getIdPerfil());
-			ps.setInt(10, empleado.getDepartamento().getIdDepartamento());
+			ps.setCharacterStream(4, empleado.getGenero());
+			ps.setString(5, empleado.getEmail());
+			ps.setString(6, empleado.getPassword());
+			ps.setDouble(7, empleado.getSalario());
+			ps.setString(8, empleado.getFechaIngreso());
+			ps.setString(9, empleado.getFechaNacimiento());
+			ps.setInt(10, empleado.getPerfil().getIdPerfil());
+			ps.setInt(110, empleado.getDepartamento().getIdDepartamento());
 
 			filas = ps.executeUpdate();
 			filas = 1;
@@ -40,10 +42,10 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 		}
 		return filas;
 	}
-
+//-------------------------------------------------------------------------------------------------------------------------
 	/*
-	 * Sobreescribimos el método elimnarUno. Para eliminar un empleado de la tabla,
-	 * el procedimiento se realizará utilizando el id del empleado. Definimos la
+	 * Sobreescribimos el mï¿½todo elimnarUno. Para eliminar un empleado de la tabla,
+	 * el procedimiento se realizarï¿½ utilizando el id del empleado. Definimos la
 	 * sentencia sql y capturamos la excepciones.
 	 */
 
@@ -61,11 +63,12 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 		}
 		return filas;
 	}
-
+//---------------------------------------------------------------------------------------------------------------------------
+	
 	/*
-	 * Sobreescribimos el método modificarUno. En este método, a partir del cif de
+	 * Sobreescribimos el mï¿½todo modificarUno. En este mï¿½todo, a partir del cif de
 	 * un empleado, se modifican sus datos con la sentencia sql correspondiente. El
-	 * método retornará true si la modificación fue exitosa.
+	 * mï¿½todo retornarï¿½ true si la modificaciï¿½n fue exitosa.
 	 */
 	@Override
 	public int modificarUno(Empleado empleado) {
@@ -76,13 +79,14 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			ps.setInt(1, empleado.getIdEmpl());
 			ps.setString(2, empleado.getNombre());
 			ps.setString(3, empleado.getApellidos());
-			ps.setString(4, empleado.getEmail());
-			ps.setString(5, empleado.getPassword());
-			ps.setDouble(6, empleado.getSalario());
-			ps.setString(7, empleado.getFechaIngreso());
-			ps.setString(8, empleado.getFechaNacimiento());
-			ps.setInt(9, empleado.getPerfil().getIdPerfil());
-			ps.setInt(10, empleado.getDepartamento().getIdDepartamento());
+			ps.setCharacterStream(4, empleado.getGenero());
+			ps.setString(5, empleado.getEmail());
+			ps.setString(6, empleado.getPassword());
+			ps.setDouble(7, empleado.getSalario());
+			ps.setString(8, empleado.getFechaIngreso());
+			ps.setString(9, empleado.getFechaNacimiento());
+			ps.setInt(10, empleado.getPerfil().getIdPerfil());
+			ps.setInt(11, empleado.getDepartamento().getIdDepartamento());
 
 			filas = ps.executeUpdate();
 			filas = 1;
@@ -92,12 +96,13 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 		}
 		return filas;
 	}
-
+//--------------------------------------------------------------------------------------------------------------------------
+	
 	/*
-	 * Sobreescribimos el método buscarUno. En este método, obtenemos los datos de
-	 * un empleado introducinedo su cif. Si dicho empleado existe, el método
-	 * retornará la fila que contiene los datos correspondientes al empleado cuyo
-	 * cif hemos pasado como parámetro.
+	 * Sobreescribimos el mï¿½todo buscarUno. En este mï¿½todo, obtenemos los datos de
+	 * un empleado introducinedo su cif. Si dicho empleado existe, el mï¿½todo
+	 * retornarï¿½ la fila que contiene los datos correspondientes al empleado cuyo
+	 * cif hemos pasado como parï¿½metro.
 	 */
 	@Override
 	public Empleado buscarUno(int idEmpl) {
@@ -123,15 +128,14 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 				empleado.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
 
 			}
-
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
-
+//-----------------------------------------------------------------------------------------------------------------------------------
 	/*
-	 * Sobreescribimos el método buscarTodos. Este método devolverá una lista con
+	 * Sobreescribimos el mï¿½todo buscarTodos. Este mï¿½todo devolverï¿½ una lista con
 	 * todos los empleados que existen en la BBDD.
 	 */
 	@Override
@@ -148,35 +152,277 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 
 		return null;
 	}
-
+//-----------------------------------------------------------------------------------------------------------------------
 	@Override
 	public List<Empleado> buscarEmpleadoPorDepartamento(int idDepartamento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		sql = "select * from empleados where id_departamento = ?";
+		
+	/*Cramos un nuevo objeto dep y definimos la lista que mostrarÃ¡ los empleados que
+	* pertenecen al departamento pasado por id. 
+	*/
+	DepartamentoDao ddao = new DepartamentoDaoImplMy8();
+	List<Empleado> lista = new ArrayList<>();
+		
+	//Captruramos las excepciones
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idDepartamento);
+			rs = ps.executeQuery();
+			
+			Departamento dep = ddao.buscarUnDepartamento(idDepartamento);
+				
+	//Establecemos que, aunque el id de departamento no exsita, se muestre la tabla vacÃ­a	
+				if (dep == null) {
+					return lista;
+				}
+	/*Se sitÃºa el cursor antes de la primera fila y luego recorremos loas filas a travÃ©s
+	*de las columnas y se recorren hasta que no haya mÃ¡s apellidos que inicien con la 
+	*subcadena indicada*/
+				while (rs.next()) {
+					Empleado emp = new Empleado();
+					PerfilDao pdao = new PerfilDaoImplMy8();
+					
+					emp.setIdEmpl(rs.getInt("id_empleado"));
+					emp.setNombre(rs.getNString("nombre"));
+					emp.setApellidos(rs.getNString("apellidos"));
+					emp.setGenero(rs.getCharacterStream("genero"));
+					emp.setEmail(rs.getNString("email"));
+					emp.setPassword(rs.getNString("password"));
+					emp.setSalario(rs.getDouble("salario"));
+					emp.setFechaIngreso(rs.getNString("fecha_ingreso"));
+					emp.setFechaNacimiento(rs.getNString("fecha_nacimiento"));
+					emp.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
+					emp.setDepartamento(dep);
+			
+		/*Establecemos que se agreguen a la lista los empelados que cumplan con la condiciÃ³n de 
+		*bÃºsqueda.
+		*/
+					lista.add(emp);
+			}
+		
+		//Imprimimos los errores y excepciones, en caso de producirse
+			} catch (Exception e) {
+				e.printStackTrace();
+		}
+		
+		/*Devolvemos la tabla que contiene a todos los empleados que pertenecen al departamento 
+		 * cuyo id fue establecido en la condiciÃ³n de bÃºsqueda.
+		 */
+		return lista;
+		}
+//-------------------------------------------------------------------------------------------
+		
+	//Sobreescribimos el mÃ©todo buscar empleado por gÃ©nero
 	@Override
 	public List<Empleado> buscarEmpleadoPorGenero(char genero) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		sql = "select * from empleados where genero = ?";
+		EmpleadoDao edao = new EmpleadoDaoImplMy8();
+		List<Empleado> lista = new ArrayList<>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setCharacterStream(1, genero);
+			rs = ps.executeQuery();
+						
+			Empleado emp = (Empleado) edao.buscarEmpleadoPorGenero(genero);
+		/*Se sitÃºa el cursor antes de la primera fila y luego recorremos loas filas a travÃ©s
+		*de las columnas y se recorren hasta que no haya mÃ¡s apellidos que inicien con la 
+		*subcadena indicada*/
+				while (rs.next()) {
+					DepartamentoDao ddao = new DepartamentoDaoImplMy8();
+					PerfilDao pdao = new PerfilDaoImplMy8();
+					
+					emp.setIdEmpl(rs.getInt("id_empleado"));
+					emp.setNombre(rs.getNString("nombre"));
+					emp.setApellidos(rs.getNString("apellidos"));
+					emp.setGenero(rs.getCharacterStream("genero"));
+					emp.setEmail(rs.getNString("email"));
+					emp.setPassword(rs.getNString("password"));
+					emp.setSalario(rs.getDouble("salario"));
+					emp.setFechaIngreso(rs.getNString("fecha_ingreso"));
+					emp.setFechaNacimiento(rs.getNString("fecha_nacimiento"));
+					emp.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
+					emp.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+					
+		/*Establecemos que se agreguen a la lista los empelados que cumplan con la condiciÃ³n de 
+		*bÃºsqueda.
+		*/
+					lista.add(emp);
+					}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/*Devolvemos la tabla que contiene a todos los empleados que pertenecen al departamento 
+		 * cuyo id fue establecido en la condiciÃ³n de bÃºsqueda.
+		 */
+		return lista;
+		
+		}		
+//-----------------------------------------------------------------------------------------------------------------------
+	
+	
+	/*Sobreescribimos el mÃ©todo buscar por apellido. En este mÃ©todo, se ingresa la subcadena con
+	 * las letras por las cuales comienza el apellido del empleado y se obtiene una lista con 
+	 * todos los empleados que contienen dicha subcadena.  
+	 */
 	@Override
 	public List<Empleado> buscarEmpleadoPorApellido(String subcadena) {
-		// TODO Auto-generated method stub
-		return null;
+		//Escribimos la sentencia sql para la bÃºsqueda en MySQL
+				sql = "select * from empleados where apellidos like ?";
+				
+		//Definimos la lista que mostrarÃ¡ los resultados obtenidos
+			List<Empleado> lista = new ArrayList<>();
+				
+		//Capturamos las excepciones		
+			try {
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, subcadena + "%");
+				rs = ps.executeQuery();
+			
+		/*Se sitÃºa el cursor antes de la primera fila y luego recorremos loas filas a travÃ©s
+		 *de las columnas y se recorren hasta que no haya mÃ¡s apellidos que inicien con la 
+		 *subcadena indicada*/
+				while (rs.next()) {
+					Empleado e = new Empleado();
+					PerfilDao pdao = new PerfilDaoImplMy8();
+					DepartamentoDao ddao = new DepartamentoDaoImplMy8();
+					
+					e.setIdEmpl(rs.getInt("id_empleado"));
+					e.setNombre(rs.getString("nombre"));
+					e.setApellidos(rs.getString("apellidos"));
+					e.setGenero(rs.getCharacterStream("genero"));
+					e.setEmail(rs.getString("email"));
+					e.setPassword(rs.getNString("password"));
+					e.setSalario(rs.getDouble("salario"));
+					e.setFechaIngreso(rs.getString("fecha_ingreso"));
+					e.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+					e.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
+					e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+					
+					lista.add(e);
+					}
+		//En caso de producirse un error, lo imprimimos con la sentencia comprendida en "catch"		
+		} catch (Exception e) {
+				e.printStackTrace();
+				}
+		//Devolvemos la lista con las condiciones de bÃºsqueda pautadas en el inicio	
+		return lista;
+			}
+//--------------------------------------------------------------------------------------------
+	
+	
+	/*Sobreescribimos el mÃ©todo buscar por pefil. En este mÃ©todo, se ingresa el idPerfil con
+	 *y se obtiene una lista con  todos los empleados que contienen dicho perfil.  
+	 */
+	@Override
+	public List<Empleado> buscarEmpleadoPorPerfil(int idPerfil) {
+		//Escribimos la sentencia sql para la bÃºsqueda en MySQL
+		sql = "select * from empleados where id_perfil = ?";
+		
+//Definimos la lista que mostrarÃ¡ los resultados obtenidos
+	List<Empleado> lista = new ArrayList<>();
+		
+//Capturamos las excepciones		
+	try {		
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1, idPerfil);;
+		rs = ps.executeQuery();
+	
+/*Se sitÃºa el cursor antes de la primera fila y luego recorremos loas filas a travÃ©s
+ *de las columnas y se recorren hasta que no haya mÃ¡s apellidos que inicien con la 
+ *subcadena indicada*/
+		while (rs.next()) {
+			Empleado e = new Empleado();
+			PerfilDao pdao = new PerfilDaoImplMy8();
+			DepartamentoDao ddao = new DepartamentoDaoImplMy8();
+			
+			e.setIdEmpl(rs.getInt("id_empleado"));
+			e.setNombre(rs.getString("nombre"));
+			e.setApellidos(rs.getString("apellidos"));
+			e.setGenero(rs.getCharacterStream("genero"));
+			e.setEmail(rs.getString("email"));
+			e.setPassword(rs.getNString("password"));
+			e.setSalario(rs.getDouble("salario"));
+			e.setFechaIngreso(rs.getString("fecha_ingreso"));
+			e.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+			e.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
+			e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+			
+			lista.add(e);
+			}
+//En caso de producirse un error, lo imprimimos con la sentencia comprendida en "catch"		
+} catch (Exception e) {
+		e.printStackTrace();
+		}
+//Devolvemos la lista con las condiciones de bÃºsqueda pautadas en el inicio	
+return lista;
 	}
-
+//---------------------------------------------------------------------------------------------	
+	
+	
+	/*Sobreescribimos el mÃ©todo salario total. Para este mÃ©todo, solo se muetra una fila que 
+	*contiene la suma de los salarios de todos los empleados. 
+	*/
 	@Override
 	public double salarioTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		//Definimos la sentencia sql que ejecutarÃ¡ la suma de los salarios
+		sql = "select sum(salario as suma from empleados";
+		
+	//Defnimos e iniciamos la variable suma
+		double suma = 0;
+	
+	//Capturamos las excepciones en try, definiendo las sentencias sql dentro de este bloque.
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+	/*Se sitÃºa el cursor antes de la primera fila y luego recorremos loas filas a travÃ©s
+	 *de las columnas*/
+			if (rs.next()) {
+				suma = rs.getDouble("suma");
+			}
+	//En caso de producirse un error, lo imprimimos con la sentencia comprendida en "catch"			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	//Devolvemos la suma de los salarios de todos los empleados		
+		return suma;
 	}
 
+	/*Sobreescribimos el mÃ©todo salario total por departamentos. Para este mÃ©todo, se muestran 
+	 * las filas con la suma de los salarios de todos los empleados especificados por departamento. 
+	 */
 	@Override
 	public double salarioTotal(int idDepartamento) {
-		// TODO Auto-generated method stub
-		return 0;
+		sql = "select sum(salario) as suma from empleados where id_departamento = ?";
+		
+	//Defnimos e iniciamos la variable suma
+		double suma = 0;
+		
+	//Capturamos las excepciones en try, definiendo las sentencias sql dentro de este bloque.
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idDepartamento);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				suma = rs.getDouble("salario");
+			}
+				
+	//En caso de producirse un error, lo imprimimos con la sentencia comprendida en "catch"			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	//Retornamos la suma de los salarios del departamento especifcado		
+		return suma;
+		}
+
+	
+	
 	}
 
-}
+
+

@@ -14,6 +14,7 @@ public interface EmpleadoDao {
 	List<Empleado> buscarEmpleadoPorDepartamento(int idDepartamento);
 	List<Empleado> buscarEmpleadoPorGenero(char genero);
 	List<Empleado> buscarEmpleadoPorApellido(String subcadena);
+	List<Empleado> buscarEmpleadoPorPerfil(int idPerfil);
 	double salarioTotal();
 	double salarioTotal(int idDepartamento);
 }

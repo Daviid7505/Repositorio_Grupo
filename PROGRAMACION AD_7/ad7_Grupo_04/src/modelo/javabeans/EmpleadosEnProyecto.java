@@ -3,7 +3,7 @@ package modelo.javabeans;
 import java.sql.Date;
 import java.util.Objects;
 
-public class ProyectoConEmpleado {
+public class EmpleadosEnProyecto {
 
 	// Definimos los atributos para la clase ProyectosConEmpleado que se
 	// corresponden con los
@@ -15,8 +15,8 @@ public class ProyectoConEmpleado {
 	int horasAsignadas;
 	Date fechaIncorporacion;
 
-	// Definimos el método constructor con todos los parámetros
-	public ProyectoConEmpleado(int numeroOrden, Proyecto proyecto, Empleado empleado, int horasAsignadas,
+	// Definimos el metodo constructor con todos los parametros
+	public EmpleadosEnProyecto(int numeroOrden, Proyecto proyecto, Empleado empleado, int horasAsignadas,
 			Date fechaIncorporacion) {
 		super();
 		this.numeroOrden = numeroOrden;
@@ -26,8 +26,8 @@ public class ProyectoConEmpleado {
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
 
-	// Definimos el método constructor sin parámetros
-	public ProyectoConEmpleado() {
+	// Definimos el metodo constructor sin parámetros
+	public EmpleadosEnProyecto() {
 		super();
 	}
 
@@ -88,7 +88,7 @@ public class ProyectoConEmpleado {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProyectoConEmpleado other = (ProyectoConEmpleado) obj;
+		EmpleadosEnProyecto other = (EmpleadosEnProyecto) obj;
 		return numeroOrden == other.numeroOrden;
 	}
 

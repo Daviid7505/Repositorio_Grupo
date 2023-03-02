@@ -3,18 +3,18 @@ package modelo.javabeans;
 import java.util.Objects;
 
 public class Cliente {
-	
+
 	// Definimos los atributos para la clase Cliente que se corresponden con los
-	//que aparecen en la BBDD
-	
+	// que aparecen en la BBDD
+
 	String cif;
 	String nombre;
 	String apellidos;
 	String domicilio;
 	double facturacionAnual;
 	int numeroEmpleados;
-	
-	// Definimos el método constructor con todos los parámetros
+
+	// Definimos el metodo constructor con todos los parámetros
 	public Cliente(String cif, String nombre, String apellidos, String domicilio, double facturacionAnual,
 			int numeroEmpleados) {
 		super();
@@ -25,13 +25,13 @@ public class Cliente {
 		this.facturacionAnual = facturacionAnual;
 		this.numeroEmpleados = numeroEmpleados;
 	}
-	
-	//Generamos el método constructor sin parámetros
+
+	// Generamos el metodo constructor sin parámetros
 	public Cliente() {
 		super();
 	}
 
-	//Generamos los getters and setters
+	// Generamos los getters and setters
 	public String getCif() {
 		return cif;
 	}
@@ -80,27 +80,20 @@ public class Cliente {
 		this.numeroEmpleados = numeroEmpleados;
 	}
 
-	//Generamos equals y hashcode, en los cuales definimos que dos clientes son iguales si
-	//tienen el mismo cif
+	// Generamos equals y hashcode, en los cuales definimos que dos clientes son
+	// iguales si
+	// tienen el mismo cif
 	@Override
 	public int hashCode() {
 		return Objects.hash(cif);
 	}
 
-	
-	
-	
-	
-	
-	
-	//REDEFINIMOS TO STRING
+	// REDEFINIMOS TO STRING
 	@Override
 	public String toString() {
 		return "Cliente [cif=" + cif + ", nombre=" + nombre + ", apellidos=" + apellidos + ", domicilio=" + domicilio
 				+ ", facturacionAnual=" + facturacionAnual + ", numeroEmpleados=" + numeroEmpleados + "]";
 	}
-	
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -113,8 +106,5 @@ public class Cliente {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(cif, other.cif);
 	}
-	
-	
-	
 
 }

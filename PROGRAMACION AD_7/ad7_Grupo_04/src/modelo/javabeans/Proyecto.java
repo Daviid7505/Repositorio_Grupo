@@ -1,29 +1,30 @@
 package modelo.javabeans;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Proyecto {
-	
-	//Definimos los atributos para la clase Proyecto que se corresponden con los
-	//que aparecen en la BBDD
-	
+
+	// Definimos los atributos para la clase Proyecto que se corresponden con los
+	// que aparecen en la BBDD
+
 	String idProyecto;
 	String descripcion;
-	String fechaInicio;
-	String fechaFinPrevisto;
-	String fechaFinReal;
+	Date fechaInicio;
+	Date fechaFinPrevisto;
+	Date fechaFinReal;
 	double ventasPrevisto;
 	double costesPrevisto;
 	double costeReal;
 	String estado;
-	int jefeProyecto;
-	Empleado empleado;
-	
-	//Generamos el método constructor con todos los parámetros
-	
-	public Proyecto(String idProyecto, String descripcion, String fechaInicio, String fechaFinPrevisto,
-			String fechaFinReal, double ventasPrevisto, double costesPrevisto, double costeReal, String estado,
-			int jefeProyecto, Empleado empleado) {
+	Empleado jefeProyecto;
+	Cliente cliente;
+
+	// Generamos el metodo constructor con todos los parametros
+
+	public Proyecto(String idProyecto, String descripcion, Date fechaInicio, Date fechaFinPrevisto, Date fechaFinReal,
+			double ventasPrevisto, double costesPrevisto, double costeReal, String estado, Empleado jefeProyecto,
+			Cliente cliente) {
 		super();
 		this.idProyecto = idProyecto;
 		this.descripcion = descripcion;
@@ -35,15 +36,15 @@ public class Proyecto {
 		this.costeReal = costeReal;
 		this.estado = estado;
 		this.jefeProyecto = jefeProyecto;
-		this.empleado = empleado;
+		this.cliente = cliente;
 	}
 
-	//Generamos el método constructor sin parámetros
+	// Generamos el metodo constructor sin parametros
 	public Proyecto() {
 		super();
 	}
-	
-	//Generamos los getters and setters
+
+	// Generamos los getters and setters
 	public String getIdProyecto() {
 		return idProyecto;
 	}
@@ -60,27 +61,27 @@ public class Proyecto {
 		this.descripcion = descripcion;
 	}
 
-	public String getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public String getFechaFinPrevisto() {
+	public Date getFechaFinPrevisto() {
 		return fechaFinPrevisto;
 	}
 
-	public void setFechaFinPrevisto(String fechaFinPrevisto) {
+	public void setFechaFinPrevisto(Date fechaFinPrevisto) {
 		this.fechaFinPrevisto = fechaFinPrevisto;
 	}
 
-	public String getFechaFinReal() {
+	public Date getFechaFinReal() {
 		return fechaFinReal;
 	}
 
-	public void setFechaFinReal(String fechaFinReal) {
+	public void setFechaFinReal(Date fechaFinReal) {
 		this.fechaFinReal = fechaFinReal;
 	}
 
@@ -99,7 +100,7 @@ public class Proyecto {
 	public void setCostesPrevisto(double costesPrevisto) {
 		this.costesPrevisto = costesPrevisto;
 	}
-	
+
 	public double getCosteReal() {
 		return costeReal;
 	}
@@ -116,24 +117,25 @@ public class Proyecto {
 		this.estado = estado;
 	}
 
-	public int getJefeProyecto() {
+	public Empleado getJefeProyecto() {
 		return jefeProyecto;
 	}
 
-	public void setJefeProyecto(int jefeProyecto) {
+	public void setJefeProyecto(Empleado jefeProyecto) {
 		this.jefeProyecto = jefeProyecto;
 	}
 
-	public Empleado getEmpleado() {
-		return empleado;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	//Generamos equals y hashcode, en los cuales definimos que dos proyectos son iguales si
-	//tienen el mismo idProyecto
+	// Generamos equals y hashcode, en los cuales definimos que dos proyectos son
+	// iguales si
+	// tienen el mismo idProyecto
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProyecto);
@@ -150,30 +152,25 @@ public class Proyecto {
 		Proyecto other = (Proyecto) obj;
 		return Objects.equals(idProyecto, other.idProyecto);
 	}
-	
-	//Métodos propios de proyectos
-	
-	//Definimos el método que calcula y retorna el margen de las ganancias.
-	
+
+	// Métodos propios de proyectos
+
+	// Definimos el método que calcula y retorna el margen de las ganancias.
+
 	public double margenPrevisto() {
-	Factura factura = new Factura();
-	double importeVenta=0;
-	double margen =  importeVenta- costesPrevisto;
-	
-	return margen;
+		Factura factura = new Factura();
+		double importeVenta = 0;
+		double margen = importeVenta - costesPrevisto;
+
+		return margen;
 	}
-	
+
 	public double margenReal() {
-	Factura factura = new Factura();
-	double importeVenta=0;
-	double mreal = importeVenta - costeReal;
-	
-	return mreal;
-	}
-	
-	
-	
-	}
-	
+		Factura factura = new Factura();
+		double importeVenta = 0;
+		double mreal = importeVenta - costeReal;
 
+		return mreal;
+	}
 
+}

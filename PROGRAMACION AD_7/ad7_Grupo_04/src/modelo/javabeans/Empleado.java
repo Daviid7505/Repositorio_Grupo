@@ -10,6 +10,7 @@ public class Empleado {
 	int idEmpl;
 	String nombre;
 	String apellidos;
+	char genero;
 	String email;
 	String password;
 	double salario;
@@ -19,13 +20,21 @@ public class Empleado {
 	Departamento departamento;
 	
 	
-	//Generamosel constructor con todos los parámetros
-	public Empleado(int idEmpl, String nombre, String apellidos, String email, String password, double salario,
-			String fechaIngreso, String fechaNacimiento, Perfil perfil, Departamento departamento) {
+	//Generamos el constructor sin parámetros
+	public Empleado() {
+		super();
+	}
+	
+	
+//Generamosel constructor con todos los parámetros
+	
+	public Empleado(int idEmpl, String nombre, String apellidos, char genero, String email, String password,
+			double salario, String fechaIngreso, String fechaNacimiento, Perfil perfil, Departamento departamento) {
 		super();
 		this.idEmpl = idEmpl;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
+		this.genero = genero;
 		this.email = email;
 		this.password = password;
 		this.salario = salario;
@@ -33,11 +42,6 @@ public class Empleado {
 		this.fechaNacimiento = fechaNacimiento;
 		this.perfil = perfil;
 		this.departamento = departamento;
-	}
-
-	//Generamos el constructor sin parámetros
-	public Empleado() {
-		super();
 	}
 
 	//Generamos los getters and setters
@@ -64,6 +68,16 @@ public class Empleado {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	
+	public char getGenero() {
+		return genero;
+	}
+
+
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+
 
 	public String getEmail() {
 		return email;
@@ -81,6 +95,7 @@ public class Empleado {
 		this.password = password;
 	}
 
+	
 	public double getSalario() {
 		return salario;
 	}
@@ -140,6 +155,15 @@ public class Empleado {
 		return idEmpl == other.idEmpl;
 	}
 	
+	//Método toString
+	@Override
+	public String toString() {
+		return "Empleado [idEmpl=" + idEmpl + ", nombre=" + nombre + ", apellidos=" + apellidos + ", genero=" + genero
+				+ ", email=" + email + ", password=" + password + ", salario=" + salario + ", fechaIngreso="
+				+ fechaIngreso + ", fechaNacimiento=" + fechaNacimiento + ", perfil=" + perfil + ", departamento="
+				+ departamento + "]";
+	}
+
 	//Métodos propios de la clase
 	
 	//Método que calcula el salario bruto del empleado
@@ -176,7 +200,6 @@ public class Empleado {
 	public String nombreCompleto() {
 		String nombreCompleto = nombre + " " + apellidos;
 		return nombreCompleto;
-	
 	}
 }
 	

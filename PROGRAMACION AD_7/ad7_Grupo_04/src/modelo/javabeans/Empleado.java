@@ -1,5 +1,6 @@
 package modelo.javabeans;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Empleado {
@@ -14,61 +15,61 @@ public class Empleado {
 	String email;
 	String password;
 	double salario;
-	String fechaIngreso;
-	String fechaNacimiento; 
+	Date fechaIngreso;
+	Date fechaNacimiento; 
 	Perfil perfil;
 	Departamento departamento;
 	
 	
-	//Generamos el constructor sin parámetros
+	//Generamos el constructor sin parametros
 	public Empleado() {
 		super();
 	}
 	
 	
-//Generamosel constructor con todos los parámetros
-	
-	public Empleado(int idEmpl, String nombre, String apellidos, char genero, String email, String password,
-			double salario, String fechaIngreso, String fechaNacimiento, Perfil perfil, Departamento departamento) {
-		super();
-		this.idEmpl = idEmpl;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.genero = genero;
-		this.email = email;
-		this.password = password;
-		this.salario = salario;
-		this.fechaIngreso = fechaIngreso;
-		this.fechaNacimiento = fechaNacimiento;
-		this.perfil = perfil;
-		this.departamento = departamento;
-	}
-
-	//Generamos los getters and setters
+//Generamos el constructor con todos los parametros
+		
 	public int getIdEmpl() {
 		return idEmpl;
 	}
+	
+	public Empleado(int idEmpl, String nombre, String apellidos, char genero, String email, String password, double salario,
+		Date fechaIngreso, Date fechaNacimiento, Perfil perfil, Departamento departamento) {
+	super();
+	this.idEmpl = idEmpl;
+	this.nombre = nombre;
+	this.apellidos = apellidos;
+	this.genero = genero;
+	this.email = email;
+	this.password = password;
+	this.salario = salario;
+	this.fechaIngreso = fechaIngreso;
+	this.fechaNacimiento = fechaNacimiento;
+	this.perfil = perfil;
+	this.departamento = departamento;
+}
 
-	public void setIdEmpl(int idEmpl) {
-		this.idEmpl = idEmpl;
-	}
-
+	//Generamos los getters and setters
 	public String getNombre() {
 		return nombre;
 	}
+
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+
 	public String getApellidos() {
 		return apellidos;
 	}
 
+
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
+
 	public char getGenero() {
 		return genero;
 	}
@@ -83,58 +84,76 @@ public class Empleado {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	
+
 	public double getSalario() {
 		return salario;
 	}
+
 
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
 
-	public String getFechaIngreso() {
+
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(String fechaIngreso) {
+
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public String getFechaNacimiento() {
+
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
 
 	public Perfil getPerfil() {
 		return perfil;
 	}
 
+
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+
 
 	public Departamento getDepartamento() {
 		return departamento;
 	}
 
+
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
+
+
+	public void setIdEmpl(int idEmpl) {
+		this.idEmpl = idEmpl;
+	}
+
 
 	//Generamos equals y hashcode, en los cuales definimos que dos empleados son iguales si
 	//tienen el mismo idEmpl
@@ -155,7 +174,7 @@ public class Empleado {
 		return idEmpl == other.idEmpl;
 	}
 	
-	//Método toString
+	//Metodo toString
 	@Override
 	public String toString() {
 		return "Empleado [idEmpl=" + idEmpl + ", nombre=" + nombre + ", apellidos=" + apellidos + ", genero=" + genero
@@ -164,14 +183,15 @@ public class Empleado {
 				+ departamento + "]";
 	}
 
-	//Métodos propios de la clase
+	//Metodos propios de la clase
 	
-	//Método que calcula el salario bruto del empleado
+	//Metodo que calcula el salario bruto del empleado
 	public double salarioBruto() {
 		double salarioBruto = salario;
 		return salarioBruto;
 	}
 	
+
 	//Metodo que calcula el salario mensual del empleado
 	public double salarioMensual(int meses) {
 	double salarioMensual=0;
@@ -179,7 +199,7 @@ public class Empleado {
 	return salarioMensual;
 	}
 	
-	//Método que devuelve el género de una persona
+	//Metodo que devuelve el género de una persona
 	public String literalSexo(char genero) {
 		if (genero == 'H' || genero == 'h')
 			return "Sexo : Hombre";
@@ -189,14 +209,14 @@ public class Empleado {
 			return "Sexo erróneo";
 	}
 	
-	//Método que devuelve el email del empleado
+	//Metodo que devuelve el email del empleado
 	public String obtenerEmail() {
 		int espacio = apellidos.indexOf(" "); // para averiguar en qu� posici�n est� el espacio entre los apellidos
 		String obtenerEmail = (nombre.charAt(0) + apellidos.substring(0, espacio)).toLowerCase() + "@nombreEmpresa.com";
 		return obtenerEmail;
 	}
 	
-	//Método que devuelve el nombre completo del empleado
+	//Metodo que devuelve el nombre completo del empleado
 	public String nombreCompleto() {
 		String nombreCompleto = nombre + " " + apellidos;
 		return nombreCompleto;

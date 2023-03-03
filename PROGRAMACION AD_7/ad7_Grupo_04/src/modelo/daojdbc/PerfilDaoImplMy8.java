@@ -10,8 +10,8 @@ import modelo.javabeans.Perfil;
 
 public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	
-	/*Sobreescribimos el m�todo altaPerfil. A trav�s de este m�todo insertamos en la
-	* en la BBDD un nuevo perfil. Una vez dado de lata, retornar� la fila con los datos
+	/*Sobreescribimos el metodo altaPerfil. A traves de este metodo insertamos en la
+	* en la BBDD un nuevo perfil. Una vez dado de lata, retornara la fila con los datos
 	* del perfil agregado.
 	*/
 	 
@@ -36,8 +36,8 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 		return filas;
 	}
 	
-	/*Sobreescribimos el m�todo eliminarUno. En este me�todo se elimina un perfil
-	 * pasando por par�metro el id del perfil que se desea eliminar.
+	/*Sobreescribimos el metodo eliminarUno. En este meetodo se elimina un perfil
+	 * pasando por parametro el id del perfil que se desea eliminar.
 	 */
 	@Override
 	public int eliminarUno(int idPerfil) {
@@ -56,8 +56,8 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 		return filas;
 	}
 	
-	/*Sobreescribimos el m�todo modificarUno, el cual modifica los datos del perfil en 
-	 * la BBDD, pas�ndole los par�metros. El m�todo retorna la fila la modificaci�n. 
+	/*Sobreescribimos el metodo modificarUno, el cual modifica los datos del perfil en 
+	 * la BBDD, pasandole los parametros. El metodo retorna la fila la modificacion. 
 	 */
 	@Override
 	public int modificarUno(Perfil perfil) {
@@ -78,7 +78,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	}
 	
 
-	/*Sobreescribimos el método buscarTodos. En este método devuelva una lista con tosos los 
+	/*Sobreescribimos el metodo buscarTodos. En este metodo devuelva una lista con todos los 
 	 * perfiles existentes en la BBDD.
 	 */
 	@Override
@@ -107,8 +107,8 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	}
 
 	
-	/*Sobreescribimos el método buscarUno. Este método devuelve la fila que contiene el 
-	 * id_perfil que le pasamos por parámetro.  
+	/*Sobreescribimos el metodo buscarUno. Este metodo devuelve la fila que contiene el 
+	 * id_perfil que le pasamos por parametro.  
 	 */
 	@Override
 	public Perfil buscarUno(int idPerfil) {

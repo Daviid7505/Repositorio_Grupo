@@ -15,16 +15,11 @@ public class TestModificarEmpleado {
 	public static void main(String[] args) {
 		
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
-		PerfilDao pdao = new PerfilDaoImplMy8();
-		DepartamentoDao ddao = new DepartamentoDaoImplMy8();
-		Empleado empleado = new Empleado();
+		Empleado emp = new Empleado();
 		
-		Empleado emp = new Empleado(122, "Marta", "Perez Torres", 'M', empleado.obtenerEmail(), "martita",
-				46000, "2023-04-12", "1982-12-25", pdao.buscarUno(3) , ddao.buscarUnDepartamento(10));
-		
-		Perfil p = new Perfil();
-		
-		//Modificamos el password y el año de nacimiento del empleado 122
+		emp.setPassword("martita"); //cambiamos password "marta" por "martita"
+				
+		//Modificamos el password del empleado 122
 		System.out.println("MODIFICAR EMPLEADO");
 		System.out.println();
 		System.out.println(edao.modificarUno(emp));

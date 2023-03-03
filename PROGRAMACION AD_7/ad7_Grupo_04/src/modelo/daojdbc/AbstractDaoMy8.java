@@ -15,7 +15,7 @@ public class AbstractDaoMy8 {
 	protected String sql;
 	protected int filas;
 	
-	//Definimos el método que utilizaremos para trabajar con java en conexión
+	//Definimos el metodo que utilizaremos para trabajar con java en conexion
 	//con la BBDD
 	public AbstractDaoMy8() {
 		conn = ConexionDaoMy8.getConexion();

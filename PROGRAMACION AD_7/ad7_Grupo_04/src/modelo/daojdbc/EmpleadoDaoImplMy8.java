@@ -106,7 +106,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public Empleado buscarUno(int idEmpl) {
-		sql = "select form empleados where id_empl = ?";
+		sql = "select * from empleados where id_empl = ?";
 		Empleado empleado = null;
 		PerfilDao pdao = new PerfilDaoImplMy8();
 		DepartamentoDao ddao = new DepartamentoDaoImplMy8();
@@ -128,13 +128,13 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 				empleado.setFechaIngreso(rs.getDate("fecha_ingreso"));
 				empleado.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
 				empleado.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
-				empleado.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+				empleado.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_depar")));
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return empleado;
 	}
 //-----------------------------------------------------------------------------------------------------------------------------------
 	/*
@@ -143,22 +143,41 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public List<Empleado> buscarTodos() {
-		sql = "select form empleados";
+		sql = "select * from empleados";
 		List<Empleado> lista = new ArrayList<>();
 
 		try {
 			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Empleado emp = new Empleado();
+				PerfilDao pdao = new PerfilDaoImplMy8();
+				DepartamentoDao ddao = new DepartamentoDaoImplMy8();
+				
+				emp.setIdEmpl(rs.getInt("id_empl"));
+				emp.setNombre(rs.getString("nombre"));
+				emp.setApellidos(rs.getString("apellidos"));
+				emp.setGenero(rs.getString("genero").charAt(0));
+				emp.setEmail(rs.getString("email"));
+				emp.setPassword(rs.getString("password"));
+				emp.setSalario(rs.getDouble("salario"));
+				emp.setFechaIngreso(rs.getDate("fecha_ingreso"));
+				emp.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				emp.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
+				emp.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_depar")));
+				
+				lista.add(emp);
+			}
+		} catch (SQLException e) {
 
-		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-
-		return null;
+		return lista;
 	}
 //-----------------------------------------------------------------------------------------------------------------------
 	@Override
 	public List<Empleado> buscarEmpleadoPorDepartamento(int idDepartamento) {
-		sql = "select * from empleados where id_departamento = ?";
+		sql = "select * from empleados where id_depar = ?";
 		
 	/*Cramos un nuevo objeto dep y definimos la lista que mostrara los empleados que
 	* pertenecen al departamento pasado por id. 
@@ -186,7 +205,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 					PerfilDao pdao = new PerfilDaoImplMy8();
 					
 					
-					emp.setIdEmpl(rs.getInt("id_empleado"));
+					emp.setIdEmpl(rs.getInt("id_empl"));
 					emp.setNombre(rs.getNString("nombre"));
 					emp.setApellidos(rs.getNString("apellidos"));
 					emp.setGenero(rs.getString("genero").charAt(0));
@@ -236,7 +255,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 					DepartamentoDao ddao = new DepartamentoDaoImplMy8();
 					PerfilDao pdao = new PerfilDaoImplMy8();
 					
-					emp.setIdEmpl(rs.getInt("id_empleado"));
+					emp.setIdEmpl(rs.getInt("id_empl"));
 					emp.setNombre(rs.getNString("nombre"));
 					emp.setApellidos(rs.getNString("apellidos"));
 					emp.setGenero(rs.getString("genero").charAt(0));
@@ -246,7 +265,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 					emp.setFechaIngreso(rs.getDate("fecha_ingreso"));
 					emp.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
 					emp.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
-					emp.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+					emp.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_depar")));
 					
 		/*Establecemos que se agreguen a la lista los empelados que cumplan con la condicion de 
 		*busqueda.
@@ -294,7 +313,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 					PerfilDao pdao = new PerfilDaoImplMy8();
 					DepartamentoDao ddao = new DepartamentoDaoImplMy8();
 					
-					e.setIdEmpl(rs.getInt("id_empleado"));
+					e.setIdEmpl(rs.getInt("id_empl"));
 					e.setNombre(rs.getString("nombre"));
 					e.setApellidos(rs.getString("apellidos"));
 					e.setGenero(rs.getString("genero").charAt(0));
@@ -304,7 +323,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 					e.setFechaIngreso(rs.getDate("fecha_ingreso"));
 					e.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
 					e.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
-					e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+					e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_depar")));
 					
 					lista.add(e);
 					}
@@ -343,7 +362,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			PerfilDao pdao = new PerfilDaoImplMy8();
 			DepartamentoDao ddao = new DepartamentoDaoImplMy8();
 			
-			e.setIdEmpl(rs.getInt("id_empleado"));
+			e.setIdEmpl(rs.getInt("id_empl"));
 			e.setNombre(rs.getString("nombre"));
 			e.setApellidos(rs.getString("apellidos"));
 			e.setGenero(rs.getString("genero").charAt(0));
@@ -353,7 +372,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			e.setFechaIngreso(rs.getDate("fecha_ingreso"));
 			e.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
 			e.setPerfil(pdao.buscarUno(rs.getInt("id_perfil")));
-			e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_departamento")));
+			e.setDepartamento(ddao.buscarUnDepartamento(rs.getInt("id_depar")));
 			
 			lista.add(e);
 			}
@@ -373,7 +392,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	@Override
 	public double salarioTotal() {
 		//Definimos la sentencia sql que ejecutara la suma de los salarios
-		sql = "select sum(salario as suma from empleados";
+		sql = "select sum(salario) as suma from empleados";
 		
 	//Defnimos e iniciamos la variable suma
 		double suma = 0;
@@ -402,7 +421,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public double salarioTotal(int idDepartamento) {
-		sql = "select sum(salario) as suma from empleados where id_departamento = ?";
+		sql = "select sum(salario) as suma from empleados where id_depar = ?";
 		
 	//Defnimos e iniciamos la variable suma
 		double suma = 0;

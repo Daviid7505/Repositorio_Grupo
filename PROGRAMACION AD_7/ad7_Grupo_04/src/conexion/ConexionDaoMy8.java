@@ -19,12 +19,13 @@ public class ConexionDaoMy8 {
 		password = "root";
 
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("Conexi�n establecida");
+			System.out.println("Conexion establecida");
 
-		} catch (SQLException e) {
+		} catch ( SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("Conexi�n no establecida");
+			System.out.println("Conexion no establecida");
 		}
 	}
 

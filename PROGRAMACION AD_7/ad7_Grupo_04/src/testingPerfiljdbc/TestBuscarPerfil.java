@@ -9,10 +9,11 @@ public class TestBuscarPerfil {
 	public static void main(String[] args) {
 		
 		PerfilDao pdao = new PerfilDaoImplMy8();
-	//Eliminamos el perfil 5
+		
+	//Buscamos el perfil 5
 		System.out.println("BUSCAR POR ID_PERFIL");
 		System.out.println();
-		System.out.println(pdao.buscarUno(3));
+		System.out.println(pdao.buscarUno(4));
 		
 	}
 

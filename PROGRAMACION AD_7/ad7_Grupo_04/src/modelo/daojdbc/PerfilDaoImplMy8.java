@@ -17,7 +17,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	 
 	@Override
 	public int altaPerfil(Perfil perfil) {
-		sql = "insert into perfiles values (?,?)";
+		sql = "insert into perfiles values (?,?,?)";
 		filas = 0;
 		Perfil pf = null;
 		
@@ -25,7 +25,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, perfil.getIdPerfil());
 			ps.setString(2, perfil.getNombre());
-			
+			ps.setDouble(3, perfil.getPrecio_hora());
 			filas = ps.executeUpdate();
 			filas = 1;
 					
@@ -61,12 +61,13 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	 */
 	@Override
 	public int modificarUno(Perfil perfil) {
-	sql = "update from perfiles set id_perfil= ?" + "nombre = ? ";
+	sql = "update from perfiles set id_perfil= ?" + "nombre = ?"+ "precio_hora=?";
 	
 	try {
 		ps = conn.prepareStatement(sql);
 		ps.setInt(1, perfil.getIdPerfil());
 		ps.setString(2, perfil.getNombre());
+		ps.setDouble(3, perfil.getPrecio_hora());
 		
 		filas = ps.executeUpdate();
 		filas = 1;
@@ -83,10 +84,9 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	 */
 	@Override
 	public List<Perfil> buscarTodos() {
-	sql = " select from perfiles ";
+	sql = "select * from perfiles";
 	List<Perfil> lista = new ArrayList<>();
-	
-			
+				
 	try {
 		ps = conn.prepareStatement(sql);
 		rs = ps.executeQuery();
@@ -96,6 +96,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 		
 		pf.setIdPerfil(rs.getInt("id_perfil"));
 		pf.setNombre(rs.getString("nombre"));
+		pf.setPrecio_hora(rs.getDouble("precio_hora"));
 		lista.add(pf);
 		
 		}
@@ -112,7 +113,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	 */
 	@Override
 	public Perfil buscarUno(int idPerfil) {
-	sql = "select from perfiles where id_perfil = ?";
+	sql = "select * from perfiles where id_perfil = ?";
 	Perfil perfil = null;
 		
 	try {
@@ -124,6 +125,7 @@ public class PerfilDaoImplMy8 extends AbstractDaoMy8 implements PerfilDao {
 	perfil = new Perfil();
 	perfil.setIdPerfil(rs.getInt("id_perfil"));
 	perfil.setNombre(rs.getNString("nombre"));
+	perfil.setPrecio_hora(rs.getDouble("precio_hora"));
 	}
 			
 	} catch (Exception e) {

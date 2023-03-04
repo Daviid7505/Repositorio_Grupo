@@ -274,8 +274,25 @@ public class ProyectoDaoImplMy8 extends AbstractDaoMy8 implements ProyectoDao{
 
 	@Override
 	public int diasATerminoProyectoActivo(String codigoProyecto) {
-		// TODO Auto-generated method stub
-		return 0;
+		sql = "select  datediff(current_date() , fecha_fin_previsto) from proyectos where id_proyecto = ?";
+		int dias = 0;
+	
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, codigoProyecto);
+			
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				dias = rs.getInt(1);
+				
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dias;
 	}
 
 	

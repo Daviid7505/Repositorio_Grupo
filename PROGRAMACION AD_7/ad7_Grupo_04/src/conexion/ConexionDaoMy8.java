@@ -23,7 +23,7 @@ public class ConexionDaoMy8 {
 			conn = DriverManager.getConnection(url, user, password);
 			System.out.println("Conexion establecida");
 
-		} catch ( SQLException | ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("Conexion no establecida");
 		}

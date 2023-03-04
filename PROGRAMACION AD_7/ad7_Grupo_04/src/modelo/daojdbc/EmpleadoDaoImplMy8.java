@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.DefaultTreeModel;
+
 import modelo.javabeans.Departamento;
 import modelo.javabeans.Empleado;
 
@@ -149,6 +151,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
+			
 			while (rs.next()) {
 				Empleado emp = new Empleado();
 				PerfilDao pdao = new PerfilDaoImplMy8();
@@ -393,7 +396,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	public double salarioTotal() {
 		//Definimos la sentencia sql que ejecutara la suma de los salarios
 		sql = "select sum(salario) as suma from empleados";
-		
+	
 	//Defnimos e iniciamos la variable suma
 		double suma = 0;
 	
@@ -401,12 +404,13 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
+						
 	/*Se ubica el cursor antes de la primera fila y luego recorremos loas filas a traves
 	 *de las columnas*/
 			if (rs.next()) {
 				suma = rs.getDouble("suma");
-			}
+				}
+			
 	//En caso de producirse un error, lo imprimimos con la sentencia comprendida en "catch"			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -431,7 +435,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, idDepartamento);
 			rs = ps.executeQuery();
-			
+		
 			if (rs.next()) {
 				suma = rs.getDouble("salario");
 			}

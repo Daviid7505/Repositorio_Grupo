@@ -9,11 +9,11 @@ public class EmpleadosEnProyecto {
 	// corresponden con los
 	// que aparecen en la BBDD
 
-	int numeroOrden;
-	Proyecto proyecto;
-	Empleado empleado;
-	int horasAsignadas;
-	Date fechaIncorporacion;
+	private int numeroOrden;
+	private Proyecto proyecto;
+	private Empleado empleado;
+	private int horasAsignadas;
+	private Date fechaIncorporacion;
 
 	// Definimos el metodo constructor con todos los parametros
 	public EmpleadosEnProyecto(int numeroOrden, Proyecto proyecto, Empleado empleado, int horasAsignadas,

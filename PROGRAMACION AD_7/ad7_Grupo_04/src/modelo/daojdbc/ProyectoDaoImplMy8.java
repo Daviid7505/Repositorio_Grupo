@@ -141,7 +141,7 @@ public class ProyectoDaoImplMy8 extends AbstractDaoMy8 implements ProyectoDao{
 					pro.setFechaInicio(rs.getDate("fecha_inicio"));
 					pro.setFechaFinPrevisto(rs.getDate("fecha_fin_previsto"));
 					pro.setFechaFinReal(rs.getDate("fecha_fin_real"));
-					pro.setVentasPrevisto(rs.getDouble("venta_provisto"));
+					pro.setVentasPrevisto(rs.getDouble("venta_previsto"));
 					pro.setCostesPrevisto(rs.getDouble("costes_previsto"));
 					pro.setCosteReal (rs.getDouble("coste_real"));
 					pro.setEstado(rs.getString("estado"));
@@ -175,7 +175,7 @@ public class ProyectoDaoImplMy8 extends AbstractDaoMy8 implements ProyectoDao{
 				pro.setFechaInicio(rs.getDate("fecha_inicio"));
 				pro.setFechaFinPrevisto(rs.getDate("fecha_fin_previsto"));
 				pro.setFechaFinReal(rs.getDate("fecha_fin_real"));
-				pro.setVentasPrevisto(rs.getDouble("venta_provisto"));
+				pro.setVentasPrevisto(rs.getDouble("venta_previsto"));
 				pro.setCostesPrevisto(rs.getDouble("costes_previsto"));
 				pro.setCosteReal (rs.getDouble("coste_real"));
 				pro.setEstado(rs.getString("estado"));

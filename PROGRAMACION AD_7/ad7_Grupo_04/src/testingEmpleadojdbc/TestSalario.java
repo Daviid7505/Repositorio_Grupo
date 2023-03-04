@@ -5,6 +5,7 @@ import modelo.daojdbc.DepartamentoDaoImplMy8;
 import modelo.daojdbc.EmpleadoDao;
 import modelo.daojdbc.EmpleadoDaoImplMy8;
 import modelo.javabeans.Departamento;
+import modelo.javabeans.Empleado;
 
 public class TestSalario {
 
@@ -21,10 +22,13 @@ public class TestSalario {
 		System.out.println();
 
 		
-	System.out.println("SALARIO TOTAL POR DEPARTAMENTO");
+		System.out.println("SALARIO TOTAL POR DEPARTAMENTO");
 		System.out.println();
+		System.out.println(edao.salarioTotal(10));
 		
-		System.out.println(edao.salarioTotal(ddao.buscarUnDepartamento(10)));
+		
+	
+		
 		
 
 	}

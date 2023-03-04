@@ -7,9 +7,9 @@ public class Perfil {
 	// Definimos los atributos para la clase departamento que se corresponden con los
 	//que aparecen en la BBDD
 	
-	int idPerfil;
-	String nombre;
-	double precio_hora;
+	private int idPerfil;
+	private String nombre;
+	private double precio_hora;
 	
 	//Definimos los constructores de la clase con todos los parámetros
 	

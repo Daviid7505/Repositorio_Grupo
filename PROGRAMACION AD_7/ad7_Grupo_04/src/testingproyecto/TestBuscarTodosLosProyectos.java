@@ -9,7 +9,7 @@ public class TestBuscarTodosLosProyectos {
 		ProyectoDao prodao = new ProyectoDaoImplMy8();
 		
 		System.out.println("Buscar un Proyecto");
-		 System.out.println(prodao.buscarUno("FOR2021001"));
+		 System.out.println(prodao.buscarTodos());
 		  
 	}
 

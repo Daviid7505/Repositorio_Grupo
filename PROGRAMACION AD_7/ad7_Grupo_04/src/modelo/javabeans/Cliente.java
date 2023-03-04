@@ -7,12 +7,12 @@ public class Cliente {
 	// Definimos los atributos para la clase Cliente que se corresponden con los
 	// que aparecen en la BBDD
 
-	String cif;
-	String nombre;
-	String apellidos;
-	String domicilio;
-	double facturacionAnual;
-	int numeroEmpleados;
+	private String cif;
+	private String nombre;
+	private String apellidos;
+	private String domicilio;
+	private double facturacionAnual;
+	private int numeroEmpleados;
 
 	// Definimos el metodo constructor con todos los parámetros
 	public Cliente(String cif, String nombre, String apellidos, String domicilio, double facturacionAnual,

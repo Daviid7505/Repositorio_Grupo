@@ -7,9 +7,9 @@ public class Factura {
 	//Definimos los atributos para la clase Factura que se corresponden con los
 	//definidos en la BBDD
 	
-	String idFactura;
-	String descripcion;
-	Proyecto proyecto;
+	private String idFactura;
+	private String descripcion;
+	private Proyecto proyecto;
 	
 	//Generamos el método constructor con todos los parámetros
 	

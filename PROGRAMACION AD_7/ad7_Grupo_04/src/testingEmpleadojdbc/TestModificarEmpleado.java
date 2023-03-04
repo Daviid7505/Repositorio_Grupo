@@ -22,7 +22,9 @@ public class TestModificarEmpleado {
 		//Modificamos el password del empleado 122
 		System.out.println("MODIFICAR EMPLEADO");
 		System.out.println();
-		System.out.println(edao.modificarUno(emp));
+		
+		
+		System.out.println(edao.modificarUno(emp.setPassword("martita")));
 		System.out.println();
 		
 		//Mostramos la tabla con las nuevas modificaciones

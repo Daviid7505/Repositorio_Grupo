@@ -8,17 +8,17 @@ public class Empleado {
 	// Definimos los atributos para la clase Empleado que se corresponden con los
 	//que aparecen en la BBDD
 	
-	int idEmpl;
-	String nombre;
-	String apellidos;
-	char genero;
-	String email;
-	String password;
-	double salario;
-	Date fechaIngreso;
-	Date fechaNacimiento; 
-	Perfil perfil;
-	Departamento departamento;
+	private int idEmpl;
+	private String nombre;
+	private String apellidos;
+	private char genero;
+	private String email;
+	private String password;
+	private double salario;
+	private Date fechaIngreso;
+	private Date fechaNacimiento; 
+	private Perfil perfil;
+	private Departamento departamento;
 	
 	
 	//Generamos el constructor sin parametros

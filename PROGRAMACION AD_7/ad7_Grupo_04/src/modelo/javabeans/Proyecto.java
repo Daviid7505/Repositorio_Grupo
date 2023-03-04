@@ -8,17 +8,17 @@ public class Proyecto {
 	// Definimos los atributos para la clase Proyecto que se corresponden con los
 	// que aparecen en la BBDD
 
-	String idProyecto;
-	String descripcion;
-	Date fechaInicio;
-	Date fechaFinPrevisto;
-	Date fechaFinReal;
-	double ventasPrevisto;
-	double costesPrevisto;
-	double costeReal;
-	String estado;
-	Empleado jefeProyecto;
-	Cliente cliente;
+	private String idProyecto;
+	private String descripcion;
+	private Date fechaInicio;
+	private Date fechaFinPrevisto;
+	private Date fechaFinReal;
+	private double ventasPrevisto;
+	private double costesPrevisto;
+	private double costeReal;
+	private String estado;
+	private Empleado jefeProyecto;
+	private Cliente cliente;
 
 	// Generamos el metodo constructor con todos los parametros
 
@@ -134,8 +134,7 @@ public class Proyecto {
 	}
 
 	// Generamos equals y hashcode, en los cuales definimos que dos proyectos son
-	// iguales si
-	// tienen el mismo idProyecto
+	// iguales si tienen el mismo idProyecto
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProyecto);

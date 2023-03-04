@@ -8,9 +8,9 @@ public class Departamento {
 	// los
 	// que aparecen en la BBDD
 
-	int idDepartamento;
-	String nombre;
-	String direccion;
+	private int idDepartamento;
+	private String nombre;
+	private String direccion;
 
 	// Definimos los constructores de la clase con todos los parámetros
 	public Departamento(int idDepartamento, String nombre, String direccion) {

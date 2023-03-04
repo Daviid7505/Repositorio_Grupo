@@ -19,7 +19,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int altaEmpleado(Empleado empleado) {
-		sql = "insert into empleados values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		sql = "insert into empleados values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		filas = 0;
 
 		try {

@@ -3,7 +3,7 @@ package testingEmpleadojdbc;
 import modelo.daojdbc.EmpleadoDao;
 import modelo.daojdbc.EmpleadoDaoImplMy8;
 
-public class BuscarEmpleadoPorId {
+public class TestBuscarEmpleadoPorId {
 
 	public static void main(String[] args) {
 		

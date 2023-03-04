@@ -90,6 +90,13 @@ public class EmpleadosEnProyecto {
 			return false;
 		EmpleadosEnProyecto other = (EmpleadosEnProyecto) obj;
 		return numeroOrden == other.numeroOrden;
+
+	}
+
+	// Metodos propios:
+	public double costeHorasAsignadas() {
+		double coste = getEmpleado().getPerfil().getPrecio_hora();
+		return horasAsignadas * coste;
 	}
 
 }

@@ -18,7 +18,7 @@ public interface EmpleadosEnProyectoDao {
 
 	List<EmpleadosEnProyecto> empleadosByProyecto(String codigoProyecto);
 
-	int asiganarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados);
+	int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados);
 
 	int horasAsignadasAProyecto(String codigoProyecto);
 

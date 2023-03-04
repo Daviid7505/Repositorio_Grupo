@@ -153,9 +153,9 @@ public class Proyecto {
 		return Objects.equals(idProyecto, other.idProyecto);
 	}
 
-	// Métodos propios de proyectos
+	// Metodos propios de proyectos
 
-	// Definimos el método que calcula y retorna el margen de las ganancias.
+	// Definimos el metodo que calcula y retorna el margen de las ganancias.
 
 	public double margenPrevisto() {
 		Factura factura = new Factura();

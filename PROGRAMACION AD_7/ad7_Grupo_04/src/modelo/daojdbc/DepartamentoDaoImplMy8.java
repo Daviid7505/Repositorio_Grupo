@@ -88,7 +88,6 @@ public class DepartamentoDaoImplMy8 extends AbstractDaoMy8 implements Departamen
 		List<Departamento> lista = new ArrayList<>();
 		try {
 			ps = conn.prepareStatement(sql);
-
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Departamento dep = new Departamento();
@@ -100,7 +99,6 @@ public class DepartamentoDaoImplMy8 extends AbstractDaoMy8 implements Departamen
 				lista.add(dep);
 			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 		return lista;

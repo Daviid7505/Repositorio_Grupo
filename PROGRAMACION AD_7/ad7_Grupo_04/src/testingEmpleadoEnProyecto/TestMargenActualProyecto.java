@@ -10,8 +10,8 @@ public class TestMargenActualProyecto {
 		EmpleadosEnProyectoDao eepd = new EmpleadosEnProyectoDaoImplMy8();
 
 		System.out.println(
-				"METODO PARA CALCULAR EL MARGEN DE BENEFICIO DEL PROYECTO. CALCULAMOS EL BENEFICIO DEL PROYECTO \"FOR2020001\":");
-		System.out.println(eepd.margenActualProyecto("FOR2020001") + " €");
+				"METODO PARA CALCULAR EL MARGEN DE BENEFICIO DEL PROYECTO. CALCULAMOS EL BENEFICIO DEL PROYECTO \"FOR2021001\":");
+		System.out.println(eepd.margenActualProyecto("FOR2021001") + " €");
 
 	}
 

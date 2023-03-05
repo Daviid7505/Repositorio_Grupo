@@ -12,11 +12,9 @@ public class TestBuscarProyectoConEmpleados {
 
 		System.out.println("BUSCAR UN PROYECTO CON EMPLEADOS POR NUMERO DE ORDEN -> 2:");
 		System.out.println(eepd.buscarUno(2));
-
 		System.out.println("BUSCAR TODOS LOS PROYECTOS CON EMPLEADOS:");
 		for (EmpleadosEnProyecto ele : eepd.buscarTodasLasOrdenes())
 			System.out.println(ele);
 
 	}
-
 }

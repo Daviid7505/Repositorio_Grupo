@@ -4,9 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.javabeans.Empleado;
 import modelo.javabeans.EmpleadosEnProyecto;
-import modelo.javabeans.Proyecto;
 
 public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadosEnProyectoDao {
 
@@ -75,17 +73,16 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 	@Override
 	public List<EmpleadosEnProyecto> buscarTodasLasOrdenes() {
 		sql = "select * from proyecto_con_empleados";
+
 		List<EmpleadosEnProyecto> lista = new ArrayList<>();
+		ProyectoDao pdao = new ProyectoDaoImplMy8();
+		EmpleadoDao edao = new EmpleadoDaoImplMy8();
 		try {
 			ps = conn.prepareStatement(sql);
-
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				ProyectoDao pdao = new ProyectoDaoImplMy8();
-				EmpleadoDao edao = new EmpleadoDaoImplMy8();
 				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
 				// si existen monta el objeto
-				eep = new EmpleadosEnProyecto();
 				eep.setNumeroOrden(rs.getInt("numero_orden"));
 				eep.setProyecto(pdao.buscarUno(rs.getString("id_proyecto")));
 				eep.setEmpleado(edao.buscarUno(rs.getInt("id_empl")));
@@ -94,6 +91,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 				lista.add(eep);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lista;
@@ -132,7 +130,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				// si existen monta el objeto
 				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
@@ -151,53 +149,8 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-<<<<<<< HEAD
-		sql = "insert into proyecto_con_empleados values(?,?,?,?,?)";
-		filas = 0;
-		try {
-			ps = conn.prepareStatement(sql);
-			filas = ps.executeUpdate();
-			filas = 1;
-
-			while (rs.next()) {
-				ProyectoDao pdao = new ProyectoDaoImplMy8();
-				EmpleadoDao edao = new EmpleadoDaoImplMy8();
-				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
-				eep = new EmpleadosEnProyecto();
-				eep.setNumeroOrden(rs.getInt("numero_orden"));
-				eep.setProyecto(pdao.buscarUno(rs.getString("id_proyecto")));
-				eep.setEmpleado(edao.buscarUno(rs.getInt("id_empl")));
-				eep.setHorasAsignadas(rs.getInt("horas_asignadas"));
-				eep.setFechaIncorporacion(rs.getDate("fecha_incorporacion"));
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-=======
-		sql = "update proyecto_con_empleados set id_proyecto = ? , id_empl = ? , horas_asignadas = ?, numero_orden = ?"
-				+ "where id_proyecto = ?";
-		
-		filas = 0;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setObject(1, empleados);
-			filas = ps.executeUpdate();
-			
-			while (rs.next()) {
-				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
-				List <EmpleadosEnProyecto> lista = new ArrayList<>();
-				lista.add(eep);
-			}
-			filas = 1;
-						
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		
->>>>>>> 0a609fe5649d35636430c218f71a2637da8df2fc
-		return filas;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -208,7 +161,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
 			rs = ps.executeQuery();
-			
+
 			if (rs.next()) {
 				suma = rs.getInt("sumaHorasProyecto"); // lo que vale es el alias
 			}
@@ -222,7 +175,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 	@Override
 	public double costeActualDeProyecto(String codigoProyecto) {
 		return 0;
-	
+
 	}
 
 	@Override
@@ -231,16 +184,9 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		double margen = 0;
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setDouble(1, margen);
 			rs = ps.executeQuery();
-<<<<<<< HEAD
 			if (rs.next()) {
-				margen = rs.getDouble("margen"); // lo que vale es el alias
-=======
-			
-			while (rs.next()) {
-				margen = rs.getDouble("m"); // lo que vale es el alias
->>>>>>> 0a609fe5649d35636430c218f71a2637da8df2fc
+				margen = rs.getDouble("margen");
 			}
 		} catch (SQLException e) {
 
@@ -248,5 +194,4 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		}
 		return margen;
 	}
-
 }

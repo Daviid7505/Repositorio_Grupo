@@ -16,7 +16,7 @@ public class ConexionDaoMy8 {
 	private ConexionDaoMy8() {
 		url = "jdbc:mysql://localhost:3306/clientes_proyectos_empleados_2023?serverTimezone=UTC";
 		user = "root";
-		password = "root";
+		password = "";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

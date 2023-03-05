@@ -46,6 +46,7 @@ public class DepartamentoDaoImplMy8 extends AbstractDaoMy8 implements Departamen
 	public int modificarUnDepartamento(Departamento departamento) {
 		sql = "update departamentos set nombre = ? ," + " direccion = ? " + " where id_depar = ?";
 		try {
+			filas = 0;
 			ps = conn.prepareStatement(sql);
 			ps.setInt(3, departamento.getIdDepartamento());
 			ps.setString(1, departamento.getNombre());
@@ -54,7 +55,6 @@ public class DepartamentoDaoImplMy8 extends AbstractDaoMy8 implements Departamen
 			filas = ps.executeUpdate();
 			filas = 1;
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 		return filas;

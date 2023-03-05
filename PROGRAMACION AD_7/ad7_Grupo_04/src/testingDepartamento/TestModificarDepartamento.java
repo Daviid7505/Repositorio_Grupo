@@ -1,4 +1,4 @@
-package testingDepartamentojdbc;
+package testingDepartamento;
 
 import modelo.daojdbc.DepartamentoDao;
 import modelo.daojdbc.DepartamentoDaoImplMy8;
@@ -11,7 +11,7 @@ public class TestModificarDepartamento {
 		DepartamentoDao ddao = new DepartamentoDaoImplMy8();
 		Departamento dep = ddao.buscarUnDepartamento(10);
 		System.out.println("MODIFICAR DEPARTAMENTO -> id_depar = 10");
-		dep.setNombre("RR.HH");
+		dep.setNombre("Logistica");
 		System.out.println(ddao.modificarUnDepartamento(dep));
 
 	}

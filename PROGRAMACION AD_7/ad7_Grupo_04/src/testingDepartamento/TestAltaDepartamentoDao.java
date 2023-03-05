@@ -1,4 +1,4 @@
-package testingDepartamentojdbc;
+package testingDepartamento;
 
 import modelo.daojdbc.DepartamentoDao;
 import modelo.daojdbc.DepartamentoDaoImplMy8;

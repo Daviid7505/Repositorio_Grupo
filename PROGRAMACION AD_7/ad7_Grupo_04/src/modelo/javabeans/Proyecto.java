@@ -170,6 +170,15 @@ public class Proyecto {
 		double mreal = importeVenta - costeReal;
 
 		return mreal;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Proyecto [idProyecto=" + idProyecto + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio
+				+ ", fechaFinPrevisto=" + fechaFinPrevisto + ", fechaFinReal=" + fechaFinReal + ", ventasPrevisto="
+				+ ventasPrevisto + ", costesPrevisto=" + costesPrevisto + ", costeReal=" + costeReal + ", estado="
+				+ estado + ", jefeProyecto=" + jefeProyecto + ", cliente=" + cliente + "]";
 	}
 
 }

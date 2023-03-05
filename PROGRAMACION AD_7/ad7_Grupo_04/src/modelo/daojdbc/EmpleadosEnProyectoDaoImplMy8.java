@@ -99,16 +99,17 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int modificarUnaOrden(EmpleadosEnProyecto orden) {
-		sql = "update proyecto_con_empleados set id_proyecto = ? , id_empl = ? , horas_asignadas = ? "
-				+ " where numero_orden = ?";
-		filas = 0;
+		sql = "update proyecto_con_empleados set id_proyecto = ? ," + " id_empl = ? ," + " horas_asignadas = ? ,"
+				+ " fecha_incorporacion = ? " + " where numero_orden = ?";
 		try {
+			filas = 0;
 			ps = conn.prepareStatement(sql);
+			ps.setInt(5, orden.getNumeroOrden());
 			ps.setString(1, orden.getProyecto().getIdProyecto());
 			ps.setInt(2, orden.getEmpleado().getIdEmpl());
 			ps.setInt(3, orden.getHorasAsignadas());
 			ps.setDate(4, orden.getFechaIncorporacion());
-			ps.setInt(5, orden.getNumeroOrden());
+
 			filas = ps.executeUpdate();
 			filas = 1;
 
@@ -147,8 +148,29 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
+		sql = "insert into proyecto_con_empleados values(?,?,?,?,?)";
+		filas = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			filas = ps.executeUpdate();
+			filas = 1;
 
-		return 0;
+			while (rs.next()) {
+				ProyectoDao pdao = new ProyectoDaoImplMy8();
+				EmpleadoDao edao = new EmpleadoDaoImplMy8();
+				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
+				eep = new EmpleadosEnProyecto();
+				eep.setNumeroOrden(rs.getInt("numero_orden"));
+				eep.setProyecto(pdao.buscarUno(rs.getString("id_proyecto")));
+				eep.setEmpleado(edao.buscarUno(rs.getInt("id_empl")));
+				eep.setHorasAsignadas(rs.getInt("horas_asignadas"));
+				eep.setFechaIncorporacion(rs.getDate("fecha_incorporacion"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return filas;
 	}
 
 	@Override
@@ -183,7 +205,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				margen = rs.getDouble("m"); // lo que vale es el alias
+				margen = rs.getDouble("margen"); // lo que vale es el alias
 			}
 		} catch (SQLException e) {
 

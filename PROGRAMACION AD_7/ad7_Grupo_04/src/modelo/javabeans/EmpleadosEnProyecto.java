@@ -26,7 +26,7 @@ public class EmpleadosEnProyecto {
 		this.fechaIncorporacion = fechaIncorporacion;
 	}
 
-	// Definimos el metodo constructor sin parámetros
+	// Definimos el metodo constructor sin parametros
 	public EmpleadosEnProyecto() {
 		super();
 	}
@@ -90,7 +90,13 @@ public class EmpleadosEnProyecto {
 			return false;
 		EmpleadosEnProyecto other = (EmpleadosEnProyecto) obj;
 		return numeroOrden == other.numeroOrden;
+	}
 
+	// Sobreescribimos metodo toString:
+	@Override
+	public String toString() {
+		return "EmpleadosEnProyecto [numeroOrden=" + numeroOrden + ", proyecto=" + proyecto + ", empleado=" + empleado
+				+ ", horasAsignadas=" + horasAsignadas + ", fechaIncorporacion=" + fechaIncorporacion + "]";
 	}
 
 	// Metodos propios:

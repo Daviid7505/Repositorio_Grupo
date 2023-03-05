@@ -1,0 +1,124 @@
+--1.- Crea un procedimiento que reciba un número de empleado y una cadena correspondiente a su nuevo oficio (job_id) como parámetros.
+--El procedimiento deberá localizar el empleado, modificar su oficio por el nuevo y visualizar los cambios realizados.
+
+create or replace PROCEDURE MODIFICAR_JOB(P_EMP IN EMPLOYEES.EMPLOYEE_ID%TYPE, P_JOB EMPLOYEES.JOB_ID%TYPE) AS
+
+OLD_JOB EMPLOYEES.JOB_ID%TYPE;
+
+BEGIN 
+
+SELECT JOB_ID INTO OLD_JOB
+FROM EMPLOYEES 
+WHERE EMPLOYEE_ID=P_EMP;
+
+DBMS_OUTPUT.PUT_LINE('EL ANTERIOR TRABAJO DEL EMPLEADO ES : ' || OLD_JOB);
+
+UPDATE EMPLOYEES
+SET JOB_ID = P_JOB; 
+
+DBMS_OUTPUT.PUT_LINE('EL NUEVO TRABAJO DEL EMPLEADO  ' || P_EMP || ' ES : ' || P_JOB);
+
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+
+END MODIFICAR_JOB;
+
+--Bloque anónimo que compruea función
+SET SERVEROUTPUT ON
+
+ALTER TRIGGER UPDATE_JOB_HISTORY DISABLE;
+
+DECLARE 
+V_EMPLOYEE_ID EMPLOYEES.EMPLOYEE_ID%TYPE := 127;
+V_JOB_ID JOBS.JOB_ID%TYPE := 'ST_CLERK';
+BEGIN
+
+MODIFICAR_JOB(V_EMPLOYEE_ID,V_JOB_ID);
+
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+
+END;
+--------------------------------------------------------------------------------------------------------------------------------------------
+--2.- El procedimiento ha de llamar a una función que deberá comprobar si el id del oficio existe. Esta tarea la realizará 
+--una función aparte a la que se le pasará el oficio por parámetro y retornará un booleano. Si el oficio no existe, el 
+--procedimiento informará con un mensaje por consola.
+
+--Creamos primero la fnción
+create or replace FUNCTION EXISTE_JOBID(P_JOBID JOBS.JOB_ID%TYPE, F_JOBID OUT JOBS%ROWTYPE) RETURN BOOLEAN AS 
+BEGIN
+    SELECT *
+    INTO F_JOBID
+    FROM JOBS
+    WHERE P_JOBID = JOB_ID;
+    RETURN TRUE;
+    
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN
+RETURN FALSE;
+
+END EXISTE_JOBID;
+
+--Creamos el procedimiento para llamar a la función
+create or replace PROCEDURE LLAMAR_EXISTE_JOB (P_JOBID JOBS.JOB_ID%TYPE, F_JOBID OUT JOBS%ROWTYPE) AS 
+BEGIN
+
+IF EXISTE_JOBID(P_JOBID, F_JOBID)THEN
+DBMS_OUTPUT.PUT_LINE('EL OFICIO EXISTE');
+ELSE
+DBMS_OUTPUT.PUT_LINE('EL OFICIO NO EXISTE');
+END IF;
+END LLAMAR_EXISTE_JOB;
+------------------------------------------------------------------------------------------------------------------------------------------
+
+--3.- Crea también un bloque anónimo donde ejecutar el procedimiento con los valores de los argumentos recogidos en 
+--variables de sustitución.
+
+set serveroutput on
+
+DECLARE
+V_JOBID JOBS.JOB_ID%TYPE := 'ST_CLERK';
+V_ROWS JOBS%ROWTYPE;
+
+BEGIN 
+LLAMAR_EXISTE_JOB(V_JOBID, V_ROWS); 
+IF V_JOBID IS NOT NULL THEN
+DBMS_OUTPUT.PUT_LINE(' ');
+ELSE
+DBMS_OUTPUT.PUT_LINE('EL JOB_ID NO EXISTE ');
+END IF;
+END;
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+--4.- Crea un trigger que inserte un registro en una tabla nueva llamada EMP_AUDIT cada vez que modificamos el
+--salario de un empleado. Sólo se realizará la operación si el salario que se va a modificar difiere del nuevo. La 
+--tabla EMP_AUDIT tendrá los siguientes campos:
+--Identificador del empleado que se está actualizando.
+--El momento en que se hace la actualización.
+
+--Primeramente, creamos la tabla que recogerá los datos especificados en el trigger
+CREATE TABLE auditar_salario (log VARCHAR2(200));
+
+--Luego, creamos el trigger
+create or replace TRIGGER EMP_AUDIT 
+BEFORE UPDATE OF SALARY  ON EMPLOYEES
+FOR EACH ROW 
+WHEN (new.salary <>  old.salary) 
+
+BEGIN
+
+INSERT INTO auditar_salario
+VALUES ('MODIFICACION SALARIAL : ' || :old.employee_id || ' ' || :old.salary || ' ' || :new.salary || ' '|| current_timestamp);
+
+END;
+
+--Creamos una consulta para comprobar que el trigger funciona y este queda registrado en la tabla AUDITAR_SALARIO
+UPDATE EMPLOYEES SET SALARY = 20000 WHERE EMPLOYEE_ID = 102;
+
+-- Creamos una prueba en la que se aplica el salario que tiene actulamente y este no se recoge en la tabla AUDITAR_SALARIO
+UPDATE EMPLOYEES SET SALARY = 17000 WHERE EMPLOYEE_ID = 101;
+
+
+--Luego de ejecutar la consulta, la tabla auditar salario muestra 

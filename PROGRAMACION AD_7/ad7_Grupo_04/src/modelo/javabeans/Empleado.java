@@ -29,27 +29,28 @@ public class Empleado {
 	
 //Generamos el constructor con todos los parametros
 		
+	public Empleado(int idEmpl, String nombre, String apellidos, char genero, String email, String password, double salario,
+			Date fechaIngreso, Date fechaNacimiento, Perfil perfil, Departamento departamento) {
+		super();
+		this.idEmpl = idEmpl;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.genero = genero;
+		this.email = email;
+		this.password = password;
+		this.salario = salario;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaNacimiento = fechaNacimiento;
+		this.perfil = perfil;
+		this.departamento = departamento;
+	}
+	
+
+	//Generamos los getters and setters
 	public int getIdEmpl() {
 		return idEmpl;
 	}
 	
-	public Empleado(int idEmpl, String nombre, String apellidos, char genero, String email, String password, double salario,
-		Date fechaIngreso, Date fechaNacimiento, Perfil perfil, Departamento departamento) {
-	super();
-	this.idEmpl = idEmpl;
-	this.nombre = nombre;
-	this.apellidos = apellidos;
-	this.genero = genero;
-	this.email = email;
-	this.password = password;
-	this.salario = salario;
-	this.fechaIngreso = fechaIngreso;
-	this.fechaNacimiento = fechaNacimiento;
-	this.perfil = perfil;
-	this.departamento = departamento;
-}
-
-	//Generamos los getters and setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -183,6 +184,7 @@ public class Empleado {
 				+ departamento + "]";
 	}
 
+//----------------------------------------------------------------------------------------------------------
 	//Metodos propios de la clase
 	
 	//Metodo que calcula el salario bruto del empleado
@@ -190,6 +192,8 @@ public class Empleado {
 		double salarioBruto = salario;
 		return salarioBruto;
 	}
+	
+
 	
 
 	//Metodo que calcula el salario mensual del empleado

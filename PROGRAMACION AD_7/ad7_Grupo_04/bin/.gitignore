@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /conexion/
 /modelo/
 /principales/
@@ -8,3 +9,12 @@
 /testingEmpleadoEnProyectojdbc/
 /testingEmpleadoEnProyecto/
 /testingDepartamento/
+=======
+/modelo/
+/testingEmpleadojdbc/
+/testingproyecto/
+/conexion/
+/testingPerfiljdbc/
+/principales/
+/testingDepartamentojdbc/
+>>>>>>> 0a609fe5649d35636430c218f71a2637da8df2fc

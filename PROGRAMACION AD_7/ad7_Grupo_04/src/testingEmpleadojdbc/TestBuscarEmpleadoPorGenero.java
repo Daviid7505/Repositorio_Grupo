@@ -4,7 +4,7 @@ import modelo.daojdbc.EmpleadoDao;
 import modelo.daojdbc.EmpleadoDaoImplMy8;
 import modelo.javabeans.Empleado;
 
-public class BuscarEmpleadoPorGenero {
+public class TestBuscarEmpleadoPorGenero {
 
 	public static void main(String[] args) {
 

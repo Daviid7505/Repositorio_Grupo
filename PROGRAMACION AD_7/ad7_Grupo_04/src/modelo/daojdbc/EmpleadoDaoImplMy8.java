@@ -1,6 +1,7 @@
 package modelo.daojdbc;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int altaEmpleado(Empleado empleado) {
-		sql = "insert into empleados values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		sql = "insert into empleados values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		filas = 0;
 
 		try {
@@ -74,8 +75,8 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int modificarUno(Empleado empleado) {
-		sql = "update from empleados set id_empl=?" + "nombre = ?" + "apellidos = ?" + "email = ?" + "password = ?"
-				+ "salario = ?" + "fecha_inicio = ?" + "fecha_nacimiento = ?" + "id_perfil = ?" + "id_departamento = ?";
+		sql = "update from empleados set id_empl=?"+ "nombre = ?"+ "apellidos = ?"+ "email = ?"+ "password = ?"
+				+ "salario = ?"+ "fecha_inicio = ?"+ "fecha_nacimiento = ?" + "id_perfil = ?" + "id_departamento = ?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, empleado.getIdEmpl());
@@ -436,7 +437,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			ps.setInt(1, idDepartamento);
 			rs = ps.executeQuery();
 		
-			if (rs.next()) {
+			while (rs.next()) {
 				suma = rs.getDouble("salario");
 			}
 				

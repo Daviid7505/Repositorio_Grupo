@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.javabeans.Empleado;
 import modelo.javabeans.EmpleadosEnProyecto;
+import modelo.javabeans.Proyecto;
 
 public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadosEnProyectoDao {
 
@@ -129,6 +131,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
 			rs = ps.executeQuery();
+			
 			while (rs.next()) {
 				// si existen monta el objeto
 				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
@@ -147,8 +150,28 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-
-		return 0;
+		sql = "update proyecto_con_empleados set id_proyecto = ? , id_empl = ? , horas_asignadas = ?, numero_orden = ?"
+				+ "where id_proyecto = ?";
+		
+		filas = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setObject(1, empleados);
+			filas = ps.executeUpdate();
+			
+			while (rs.next()) {
+				EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
+				List <EmpleadosEnProyecto> lista = new ArrayList<>();
+				lista.add(eep);
+			}
+			filas = 1;
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		return filas;
 	}
 
 	@Override
@@ -159,6 +182,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
 			rs = ps.executeQuery();
+			
 			if (rs.next()) {
 				suma = rs.getInt("sumaHorasProyecto"); // lo que vale es el alias
 			}
@@ -171,8 +195,8 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public double costeActualDeProyecto(String codigoProyecto) {
-
 		return 0;
+	
 	}
 
 	@Override
@@ -181,8 +205,10 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		double margen = 0;
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setDouble(1, margen);
 			rs = ps.executeQuery();
-			if (rs.next()) {
+			
+			while (rs.next()) {
 				margen = rs.getDouble("m"); // lo que vale es el alias
 			}
 		} catch (SQLException e) {

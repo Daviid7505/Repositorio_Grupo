@@ -437,7 +437,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 			ps.setInt(1, idDepartamento);
 			rs = ps.executeQuery();
 		
-			if (rs.next()) {
+			while (rs.next()) {
 				suma = rs.getDouble("salario");
 			}
 				

@@ -1,6 +1,8 @@
 package testingEmpleadojdbc;
 
 import java.sql.Date;
+import java.text.DateFormat;
+
 import modelo.daojdbc.DepartamentoDao;
 import modelo.daojdbc.DepartamentoDaoImplMy8;
 import modelo.daojdbc.EmpleadoDao;
@@ -17,9 +19,10 @@ public class TestAltaEmpleado {
 		PerfilDao pdao = new PerfilDaoImplMy8();
 		DepartamentoDao ddao = new DepartamentoDaoImplMy8();
 		Empleado e = new Empleado();
+		Date f = Date.valueOf("1980-04-12");
 		
 		Empleado emp = new Empleado(121, "Marta", "Robles", 'M', e.obtenerEmail(), 
-		"marta", 43000, new Date (new java.util.Date().getTime()), new Date (new java.util.Date().getTime()) , 
+		"marta", 43000, new Date (new java.util.Date().getTime()), f , 
 		pdao.buscarUno(2), ddao.buscarUnDepartamento(10));		
 				
 		System.out.println("ALTA EMPLEADO");

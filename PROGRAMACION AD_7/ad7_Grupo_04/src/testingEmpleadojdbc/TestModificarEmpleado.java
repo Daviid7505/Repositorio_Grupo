@@ -15,7 +15,7 @@ public class TestModificarEmpleado {
 	public static void main(String[] args) {
 		
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
-		Empleado emp = new Empleado();
+		Empleado emp = edao.buscarUno(120);
 		
 		emp.setPassword("martita"); //cambiamos password "marta" por "martita"
 				
@@ -24,7 +24,7 @@ public class TestModificarEmpleado {
 		System.out.println();
 		
 		
-		System.out.println(edao.modificarUno(emp.setPassword("martita")));
+		System.out.println(edao.modificarUno(emp));
 		System.out.println();
 		
 		//Mostramos la tabla con las nuevas modificaciones

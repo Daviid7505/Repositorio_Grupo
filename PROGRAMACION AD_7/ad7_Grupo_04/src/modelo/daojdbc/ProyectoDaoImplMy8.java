@@ -51,46 +51,38 @@ public class ProyectoDaoImplMy8 extends AbstractDaoMy8 implements ProyectoDao{
 		}
 		return filas;
 	}
-	
-
-	@Override
-	public int modificarProyecto(Proyecto proyecto) {
-		 sql = "update proyecto set id_proyecto = ?,"
-					+ "descripcion = ? ,"
-					+ " fecha_inicio = ? ,"
-					+ " fecha_fin _previsto = ? "
-					+ " fecha_fin _real = ? "
-					+ " venta _previsto = ? "
-					+ " costes _previsto = ? "
-					+ " coste_real = ? "
-					+ " estado = ? "
-					+ " jefe_proyecto = ? "
-					+ " cif = ? "
-					+ " where id_proyecto = ?";
-			//puede ser que lo tenga que cambiar
-			try {
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, proyecto.getIdProyecto());
-				ps.setString(2, proyecto.getDescripcion());
-				ps.setDate(3, proyecto.getFechaInicio());
-				ps.setDate(4, proyecto.getFechaFinPrevisto());
-				ps.setDate(5, proyecto.getFechaFinReal());
-				ps.setDouble(6, proyecto.getVentasPrevisto());
-				ps.setDouble(7, proyecto.getCostesPrevisto());
-				ps.setDouble (8, proyecto.getCosteReal());
-				ps.setString(9, proyecto.getEstado());
-				ps.setInt(10, proyecto.getJefeProyecto().getIdEmpl());
-				ps.setString(11, proyecto.getCliente().getCif());
-				filas = ps.executeUpdate();
-				filas = 1;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				
-		
-			}
-			return filas;	
+	 //Este metodo modifica un proyecto
+		@Override
+		public int modificarProyecto(Proyecto proyecto) {
+			 sql = "update proyecto set descripcion = ?, fecha_inicio = ?, fecha_fin _previsto = ?, fecha_fin _real = ?, venta _previsto = ?,costes _previsto = ?,coste_real = ?,estado = ?,jefe_proyecto = ? ,cif = ?,"
+					+ "where id_proyecto =? ";
+			 filas = 0;
+				try {
+					ps = conn.prepareStatement(sql);
+					
+					//ps.setString(1, proyecto.getIdProyecto());
+					ps.setString(1, proyecto.getDescripcion());
+					ps.setDate(2, proyecto.getFechaInicio());
+					ps.setDate(3, proyecto.getFechaFinPrevisto());
+					ps.setDate (4, proyecto.getFechaFinReal());
+					ps.setDouble(5, proyecto.getVentasPrevisto());
+					ps.setDouble(6, proyecto.getCostesPrevisto());
+					ps.setDouble (7, proyecto.getCosteReal());
+					ps.setString(8, proyecto.getEstado());
+					ps.setInt(9, proyecto.getJefeProyecto().getIdEmpl());
+					ps.setString(10, proyecto.getCliente().getCif());
+					ps.setString(11, proyecto.getIdProyecto());
+					filas = ps.executeUpdate();
+					filas = 1;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+			
+				}
+				return filas;	
 		}
+
 	@Override
 	public Proyecto buscarUno(String idProyecto) {
 		sql = "select * from proyectos where id_proyecto = ?";

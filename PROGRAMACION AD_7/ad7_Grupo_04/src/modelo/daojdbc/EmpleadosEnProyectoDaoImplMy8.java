@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.javabeans.Empleado;
 import modelo.javabeans.EmpleadosEnProyecto;
 
 public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadosEnProyectoDao {
@@ -91,7 +92,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 				lista.add(eep);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return lista;
@@ -126,6 +127,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		List<EmpleadosEnProyecto> lista = new ArrayList<>();
 		ProyectoDao pdao = new ProyectoDaoImplMy8();
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
@@ -149,7 +151,18 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-		// TODO Auto-generated method stub
+		sql = "insert into empleados_en_proyecto where id_proyecto = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+				
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

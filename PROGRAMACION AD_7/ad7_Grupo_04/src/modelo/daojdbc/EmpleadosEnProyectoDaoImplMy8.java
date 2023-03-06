@@ -174,7 +174,26 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public double costeActualDeProyecto(String codigoProyecto) {
-		return 0;
+		sql = "select sum(p.precio_hora *pce.horas_asignadas) as total from empleados e "
+				+ "join perfiles p"
+				+ "on e.id_perfil = p.id_perfil "
+				+ "join proyecto_con_empleados pce on e.id_empl = pce.id_empl";
+		
+		double coste = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, codigoProyecto);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				coste = rs.getInt("total"); // lo que vale es el alias
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return coste;
 
 	}
 

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.cj.xdevapi.Statement;
+
 public class ConexionDaoMy8 {
 
 	// Definimos los atributos de la clase
@@ -19,9 +21,9 @@ public class ConexionDaoMy8 {
 		password = "";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
 			System.out.println("Conexion establecida");
+			Statement st = (Statement) conn.createStatement();
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

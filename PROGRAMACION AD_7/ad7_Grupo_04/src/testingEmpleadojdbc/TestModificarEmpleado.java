@@ -16,6 +16,7 @@ public class TestModificarEmpleado {
 		
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
 		Empleado emp =edao.buscarUno(120);
+	
 		
 		emp.setPassword("raquelita"); //cambiamos password "marta" por "martita"
 				

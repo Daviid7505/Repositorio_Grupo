@@ -4,7 +4,7 @@ import modelo.daojdbc.EmpleadosEnProyectoDao;
 import modelo.daojdbc.EmpleadosEnProyectoDaoImplMy8;
 import modelo.javabeans.EmpleadosEnProyecto;
 
-public class TestEliminarConEmpleados {
+public class TestEliminarProyecrosConEmpleados {
 
 	public static void main(String[] args) {
 

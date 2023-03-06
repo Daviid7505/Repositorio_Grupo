@@ -2,9 +2,8 @@ package testingEmpleadoEnProyecto;
 
 import modelo.daojdbc.EmpleadosEnProyectoDao;
 import modelo.daojdbc.EmpleadosEnProyectoDaoImplMy8;
-import modelo.javabeans.EmpleadosEnProyecto;
 
-public class TestBuscarProyectoConEmpleados {
+public class TestBuscarUnProyectoConEmpleados {
 
 	public static void main(String[] args) {
 
@@ -12,9 +11,5 @@ public class TestBuscarProyectoConEmpleados {
 
 		System.out.println("BUSCAR UN PROYECTO CON EMPLEADOS POR NUMERO DE ORDEN -> 2:");
 		System.out.println(eepd.buscarUno(2));
-		System.out.println("BUSCAR TODOS LOS PROYECTOS CON EMPLEADOS:");
-		for (EmpleadosEnProyecto ele : eepd.buscarTodasLasOrdenes())
-			System.out.println(ele);
-
 	}
 }

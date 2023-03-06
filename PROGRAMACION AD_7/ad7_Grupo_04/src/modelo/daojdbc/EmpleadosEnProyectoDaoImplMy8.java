@@ -1,10 +1,9 @@
-Grapackage modelo.daojdbc;
+package modelo.daojdbc;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.javabeans.Empleado;
 import modelo.javabeans.EmpleadosEnProyecto;
 
 public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadosEnProyectoDao {
@@ -92,7 +91,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 				lista.add(eep);
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return lista;
@@ -127,7 +126,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		List<EmpleadosEnProyecto> lista = new ArrayList<>();
 		ProyectoDao pdao = new ProyectoDaoImplMy8();
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
@@ -151,19 +150,25 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-		sql = "insert into empleados_en_proyecto where id_proyecto = ?";
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-				
+		sql = "insert into proyecto_con_empleados " + "(id_proyecto, id_empl, horas_asignadas, fecha_incorporacion) "
+				+ "values(?,?,?,?)";
+		EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
+		int contador = 0;
+		for (EmpleadosEnProyecto ele : empleados) {
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, ele.getProyecto().getIdProyecto());
+				ps.setInt(2, ele.getEmpleado().getIdEmpl());
+				ps.setInt(3, ele.getHorasAsignadas());
+				ps.setDate(4, ele.getFechaIncorporacion());
+				filas = ps.executeUpdate();
+				contador++;
 
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return 0;
+		return contador;
 	}
 
 	@Override
@@ -187,27 +192,24 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public double costeActualDeProyecto(String codigoProyecto) {
-		sql = "select sum(p.precio_hora *pce.horas_asignadas) as total from empleados e "
-				+ "join perfiles p"
-				+ "on e.id_perfil = p.id_perfil "
-				+ "join proyecto_con_empleados pce on e.id_empl = pce.id_empl";
-		
+		sql = "select sum(p.precio_hora *pce.horas_asignadas) as total from empleados e join perfiles p on e.id_perfil "
+				+ "= p.id_perfil join proyecto_con_empleados pce on e.id_empl = pce.id_empl where id_proyecto = ?";
+
 		double coste = 0;
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, codigoProyecto);
 			rs = ps.executeQuery();
-			
+
 			if (rs.next()) {
-				coste = rs.getInt("total"); // lo que vale es el alias
+				coste = rs.getDouble("total"); // lo que vale es el alias
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return coste;
-
 	}
 
 	@Override

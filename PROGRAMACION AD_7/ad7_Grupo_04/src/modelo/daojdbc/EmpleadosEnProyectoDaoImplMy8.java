@@ -149,7 +149,8 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-		// TODO Auto-generated method stub
+		sql = "insert into empleado_en_proyecto";
+		
 		return 0;
 	}
 

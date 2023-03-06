@@ -13,7 +13,7 @@ import modelo.javabeans.Empleado;
 public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 
 	/*
-	 * Sobreescribimos el metodo altaEmpleado. A trav�s de este metodo, se inserta
+	 * Sobreescribimos el metodo altaEmpleado. A trav�e de este metodo, se inserta
 	 * un empleado utilizando Eclipse y se refleja en la BBDD. Como el metodo arroja
 	 * una excepcion, dentro de try definimos las sentencias SQL que pueden causar
 	 * la excepcion En catch, definimos la respuesta que daremos a dicha excepcion
@@ -75,7 +75,7 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int modificarUno(Empleado empleado) {
-		sql = "update from empleados set id_empl=?"+ "nombre = ?"+ "apellidos = ?"+ "email = ?"+ "password = ?"
+		sql = "update from empleados set id_empl=?"+ "nombre = ?"+ "apellidos = ?"+ "genero = ?" + "email = ?"+ "password = ?"
 				+ "salario = ?"+ "fecha_inicio = ?"+ "fecha_nacimiento = ?" + "id_perfil = ?" + "id_departamento = ?";
 		try {
 			ps = conn.prepareStatement(sql);

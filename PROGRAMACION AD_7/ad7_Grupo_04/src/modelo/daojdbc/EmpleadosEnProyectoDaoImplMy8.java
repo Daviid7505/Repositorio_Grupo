@@ -1,4 +1,4 @@
-Grapackage modelo.daojdbc;
+package modelo.daojdbc;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -151,6 +151,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
+
 		sql = "insert into empleados_en_proyecto where id_proyecto = ?";
 		
 		try {
@@ -163,6 +164,10 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		sql = "insert into empleado_en_proyecto";
+		
+
 		return 0;
 	}
 

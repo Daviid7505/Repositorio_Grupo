@@ -9,20 +9,13 @@ public class TestModificarEmpleado {
 	public static void main(String[] args) {
 
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
-<<<<<<< HEAD
-		Empleado emp =edao.buscarUno(120);
-	
-		
-		emp.setPassword("raquelita"); //cambiamos password "marta" por "martita"
-				
-		//Modificamos el password del empleado 122
-=======
+
 		Empleado emp = edao.buscarUno(120);
 
-		emp.setPassword("raquelita"); // cambiamos password "marta" por "martita"
+		emp.setPassword("raquelita"); // cambiamos password "raquel" por "raquelita"
 
-		// Modificamos el password del empleado 122
->>>>>>> Alberto
+		// Modificamos el password del empleado 120
+
 		System.out.println("MODIFICAR EMPLEADO");
 		System.out.println();
 

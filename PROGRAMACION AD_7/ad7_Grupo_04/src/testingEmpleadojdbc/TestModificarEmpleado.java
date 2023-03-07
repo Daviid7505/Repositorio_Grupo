@@ -9,20 +9,16 @@ public class TestModificarEmpleado {
 	public static void main(String[] args) {
 
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
-<<<<<<< HEAD
+
 		Empleado emp =edao.buscarUno(120);
-	
 		
-		emp.setPassword("raquelita"); //cambiamos password "marta" por "martita"
-				
-		//Modificamos el password del empleado 122
-=======
-		Empleado emp = edao.buscarUno(120);
+		emp.setPassword("raquelita"); 
+		
+		emp.getDepartamento().setIdDepartamento(40);
+		emp.getPerfil().setIdPerfil(4);		
 
-		emp.setPassword("raquelita"); // cambiamos password "marta" por "martita"
+		// Modificamos el password del empleado
 
-		// Modificamos el password del empleado 122
->>>>>>> Alberto
 		System.out.println("MODIFICAR EMPLEADO");
 		System.out.println();
 
@@ -34,5 +30,6 @@ public class TestModificarEmpleado {
 		for (Empleado ele : edao.buscarTodos()) {
 			System.out.println(ele);
 		}
+
 	}
 }

@@ -180,5 +180,5 @@ public class Proyecto {
 				+ ventasPrevisto + ", costesPrevisto=" + costesPrevisto + ", costeReal=" + costeReal + ", estado="
 				+ estado + ", jefeProyecto=" + jefeProyecto + ", cliente=" + cliente + "]";
 	}
-
+  
 }

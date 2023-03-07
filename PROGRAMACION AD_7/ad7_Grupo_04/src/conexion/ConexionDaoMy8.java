@@ -14,7 +14,7 @@ public class ConexionDaoMy8 {
 
 	// Creamos el m�todo para la conexi�n con la BBDD
 	private ConexionDaoMy8() {
-		url = "jdbc:mysql://localhost:3306/clientes_proyectos_empleados_2023?serverTimezone=UTC";
+		url = "jdbc:mysql://localhost:3306/banco_fp_23?serverTimezone=UTC";
 		user = "root";
 		password = "";
 

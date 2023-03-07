@@ -150,16 +150,7 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<EmpleadosEnProyecto> empleados) {
-<<<<<<< HEAD
-
-		sql = "insert into empleados_en_proyecto where id_proyecto = ?";
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-				
-=======
+	
 		sql = "insert into proyecto_con_empleados " + "(id_proyecto, id_empl, horas_asignadas, fecha_incorporacion) "
 				+ "values(?,?,?,?)";
 		EmpleadosEnProyecto eep = new EmpleadosEnProyecto();
@@ -173,21 +164,15 @@ public class EmpleadosEnProyectoDaoImplMy8 extends AbstractDaoMy8 implements Emp
 				ps.setDate(4, ele.getFechaIncorporacion());
 				filas = ps.executeUpdate();
 				contador++;
->>>>>>> Alberto
+
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-<<<<<<< HEAD
-
-		sql = "insert into empleado_en_proyecto";
 		
-
-		return 0;
-=======
+		}
 		return contador;
->>>>>>> Alberto
+
 	}
 
 	@Override

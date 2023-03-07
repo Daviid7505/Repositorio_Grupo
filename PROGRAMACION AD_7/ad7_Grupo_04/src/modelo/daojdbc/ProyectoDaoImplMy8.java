@@ -54,7 +54,7 @@ public class ProyectoDaoImplMy8 extends AbstractDaoMy8 implements ProyectoDao{
 	 //Este metodo modifica un proyecto
 		@Override
 		public int modificarProyecto(Proyecto proyecto) {
-			 sql = "update proyecto set descripcion = ?, fecha_inicio = ?, fecha_fin _previsto = ?, fecha_fin _real = ?, venta _previsto = ?,costes _previsto = ?,coste_real = ?,estado = ?,jefe_proyecto = ? ,cif = ?,"
+			 sql = "update proyecto set descripcion = ?, fecha_inicio = ?, fecha_fin_previsto = ?, fecha_fin_real = ?, venta_previsto = ?,costes_previsto = ?,coste_real = ?,estado = ?,jefe_proyecto = ? ,cif = ?,"
 					+ "where id_proyecto =? ";
 			 filas = 0;
 				try {

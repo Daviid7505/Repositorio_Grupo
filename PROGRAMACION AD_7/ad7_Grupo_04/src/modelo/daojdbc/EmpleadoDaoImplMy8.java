@@ -75,9 +75,8 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int modificarUno(Empleado empleado) {
-		sql = "update from empleados set id_empl = ?"+ "nombre = ?"+ " apellidos = ?"+ " genero = ?" + "email = ?"+ "password = ?"
-				+ "salario = ?"+ "fecha_inicio = ?"+ "fecha_nacimiento = ?" + "id_perfil = ?" + "id_departamento = ?"
-				+ " where id_empl = ?";
+		sql = "update from empleados set nombre = ?, apellidos = ?, genero = ?, email = ?, password = ?, salario = ?"
+				+"fecha_inicio = ?, fecha_nacimiento = ?, id_perfil = ?, id_departamento = ? where id_empl = ?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, empleado.getIdEmpl());

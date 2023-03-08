@@ -1,5 +1,6 @@
 package testingEmpleadoEnProyecto;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +20,14 @@ public class TestAsignarEmpleadosAProyecto {
 		ProyectoDao pdao = new ProyectoDaoImplMy8();
 		EmpleadoDao edao = new EmpleadoDaoImplMy8();
 
+		Date f1 = Date.valueOf("2022-06-12");
+		Date f2 = Date.valueOf("2023-01-12");
+		Date f3 = Date.valueOf("2022-02-28");
+
 		List<EmpleadosEnProyecto> lista = new ArrayList<>();
-		lista.add(new EmpleadosEnProyecto(6, pdao.buscarUno("FOR2021001"), edao.buscarUno(117), 55, null));
-		lista.add(new EmpleadosEnProyecto(7, pdao.buscarUno("FOR2020001"), edao.buscarUno(114), 80, null));
-		lista.add(new EmpleadosEnProyecto(8, pdao.buscarUno("FOR2020001"), edao.buscarUno(100), 70, null));
+		lista.add(new EmpleadosEnProyecto(6, pdao.buscarUno("FOR2021001"), edao.buscarUno(117), 55, f1));
+		lista.add(new EmpleadosEnProyecto(7, pdao.buscarUno("FOR2020001"), edao.buscarUno(114), 80, f2));
+		lista.add(new EmpleadosEnProyecto(8, pdao.buscarUno("FOR2020001"), edao.buscarUno(100), 70, f3));
 
 		System.out.println(eepd.asignarEmpleadosAProyecto(lista));
 	}

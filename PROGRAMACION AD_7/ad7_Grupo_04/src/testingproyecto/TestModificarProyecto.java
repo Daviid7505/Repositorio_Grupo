@@ -1,5 +1,9 @@
 package testingproyecto;
 
+import modelo.daojdbc.ClienteDao;
+import modelo.daojdbc.ClienteDaoImplMy8;
+import modelo.daojdbc.EmpleadoDao;
+import modelo.daojdbc.EmpleadoDaoImplMy8;
 import modelo.daojdbc.ProyectoDao;
 import modelo.daojdbc.ProyectoDaoImplMy8;
 import modelo.javabeans.Proyecto;
@@ -7,32 +11,24 @@ import modelo.javabeans.Proyecto;
 public class TestModificarProyecto {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
 
-		ProyectoDao prodao = new ProyectoDaoImplMy8();
 
-		System.out.println("Buscar un Proyecto");
-		Proyecto pro = new Proyecto();
-		System.out.println(prodao.buscarUno("FOR2021001"));
-		pro.setIdProyecto("FOR2020002");
-		System.out.println(prodao.modificarProyecto(pro));
-
-	}
-
-}
-=======
 		 ProyectoDao prodao = new ProyectoDaoImplMy8();
-			Proyecto pro = prodao.buscarUno("FOR2020001");
-			System.out.println("Buscar un Proyecto");
-			//Proyecto pro = new Proyecto();
-			System.out.println(prodao.buscarUno("FOR2020001"));
-			pro.setDescripcion("ProyectoDesarollo");
+	        EmpleadoDao empdao = new EmpleadoDaoImplMy8();
+	        ClienteDao cldao =new ClienteDaoImplMy8();
+		    Proyecto proyecto = prodao.buscarUno("FOR202007");
+		    proyecto.setDescripcion("Financicion");
+	        proyecto.getEmpleado().setIdEmpl(114);
+	        proyecto.getCliente().setCif("A22222222");
+	        System.out.println(prodao.modificarProyecto(proyecto));
+	        System.out.println( prodao.buscarUno("FOR202007"));
+			
+			 
 
-			System.out.println(prodao.modificarProyecto(pro));
-			  
-
-
+			}
 	}
 
-}
->>>>>>> kyty
+
+
+
+

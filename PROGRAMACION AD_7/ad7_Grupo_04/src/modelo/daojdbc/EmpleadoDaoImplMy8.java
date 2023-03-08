@@ -72,23 +72,42 @@ public class EmpleadoDaoImplMy8 extends AbstractDaoMy8 implements EmpleadoDao {
 	 */
 	@Override
 	public int modificarUno(Empleado empleado) {
+<<<<<<< HEAD
 
 		sql = "update empleados set nombre = ?, apellidos = ?, genero = ?, email = ?, password = ?, salario = ?"
 				+ "fecha_inicio = ?, fecha_nacimiento = ?, id_perfil = ?, id_departamento = ? where id_empl = ?";
 
+=======
+<<<<<<< HEAD
+		sql = " update empleados set nombre = ? , apellidos = ? , genero = ? , email = ? , password = ? , salario = ? , fecha_ingreso = ? , fecha_nacimiento = ? , id_perfil = ? , id_depar = ? "
+				+ " where id_empl = ? ";
+				
+		filas = 0;
+=======
+<<<<<<< HEAD
+		sql = "update from empleados set nombre = ?, apellidos = ?, genero = ?, email = ?, password = ?, salario = ?"
+				+"fecha_inicio = ?, fecha_nacimiento = ?, id_perfil = ?, id_departamento = ? where id_empl = ?";
+=======
+		sql = "update from empleados set id_empl=?" + "nombre = ?" + "apellidos = ?" + "genero = ?" + "email = ?"
+				+ "password = ?" + "salario = ?" + "fecha_inicio = ?" + "fecha_nacimiento = ?" + "id_perfil = ?"
+				+ "id_departamento = ?";
+>>>>>>> Alberto
+>>>>>>> 45aa953ed0441ae4bd765a166c1aa2a3eb4f9655
+>>>>>>> e894c419643d54942d88c38190cb0d177007cbdb
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, empleado.getIdEmpl());
-			ps.setString(2, empleado.getNombre());
-			ps.setString(3, empleado.getApellidos());
-			ps.setString(4, Character.toString(empleado.getGenero()));
-			ps.setString(5, empleado.getEmail());
-			ps.setString(6, empleado.getPassword());
-			ps.setDouble(7, empleado.getSalario());
-			ps.setDate(8, empleado.getFechaIngreso());
-			ps.setDate(9, empleado.getFechaNacimiento());
-			ps.setInt(10, empleado.getPerfil().getIdPerfil());
-			ps.setInt(11, empleado.getDepartamento().getIdDepartamento());
+			
+			ps.setString(1, empleado.getNombre());
+			ps.setString(2, empleado.getApellidos());
+			ps.setString(3, Character.toString(empleado.getGenero()));
+			ps.setString(4, empleado.getEmail());
+			ps.setString(5, empleado.getPassword());
+			ps.setDouble(6, empleado.getSalario());
+			ps.setDate(7, empleado.getFechaIngreso());
+			ps.setDate(8, empleado.getFechaNacimiento());
+			ps.setInt(9, empleado.getPerfil().getIdPerfil());
+			ps.setInt(10, empleado.getDepartamento().getIdDepartamento());
+			ps.setInt(11, empleado.getIdEmpl());
 
 			filas = ps.executeUpdate();
 			filas = 1;

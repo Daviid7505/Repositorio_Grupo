@@ -1,5 +1,10 @@
 /conexion/
 /modelo/
+<<<<<<< HEAD
+/testingEmpleadojdbc/
+/testingEmpleadoEnProyecto/
+=======
 /principales/
 /testingEmpleadoEnProyecto/
 /testingEmpleadojdbc/
+>>>>>>> 45aa953ed0441ae4bd765a166c1aa2a3eb4f9655

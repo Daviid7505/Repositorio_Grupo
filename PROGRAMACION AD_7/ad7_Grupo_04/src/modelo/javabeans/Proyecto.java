@@ -1,9 +1,12 @@
 package modelo.javabeans;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Proyecto {
+
 
 	// Definimos los atributos para la clase Proyecto que se corresponden con los
 	// que aparecen en la BBDD
@@ -13,17 +16,24 @@ public class Proyecto {
 	private Date fechaInicio;
 	private Date fechaFinPrevisto;
 	private Date fechaFinReal;
-	private double ventasPrevisto;
+	private double ventaPrevisto;
 	private double costesPrevisto;
 	private double costeReal;
 	private String estado;
-	private Empleado jefeProyecto;
+	private Empleado empleado;
 	private Cliente cliente;
-
-	// Generamos el metodo constructor con todos los parametros
-
+	
+	//Con la ayuda de surce generamos:
+	
+	
+	//El constructor vacio
+	public Proyecto() {
+		super();
+	}
+	
+	//El constructor con todo
 	public Proyecto(String idProyecto, String descripcion, Date fechaInicio, Date fechaFinPrevisto, Date fechaFinReal,
-			double ventasPrevisto, double costesPrevisto, double costeReal, String estado, Empleado jefeProyecto,
+			double ventaPrevisto, double costesPrevisto, double costeReal, String estado, Empleado empleado,
 			Cliente cliente) {
 		super();
 		this.idProyecto = idProyecto;
@@ -31,115 +41,97 @@ public class Proyecto {
 		this.fechaInicio = fechaInicio;
 		this.fechaFinPrevisto = fechaFinPrevisto;
 		this.fechaFinReal = fechaFinReal;
-		this.ventasPrevisto = ventasPrevisto;
+		this.ventaPrevisto = ventaPrevisto;
 		this.costesPrevisto = costesPrevisto;
 		this.costeReal = costeReal;
 		this.estado = estado;
-		this.jefeProyecto = jefeProyecto;
+		this.empleado = empleado;
 		this.cliente = cliente;
 	}
-
-	// Generamos el metodo constructor sin parametros
-	public Proyecto() {
-		super();
-	}
-
-	// Generamos los getters and setters
+	
+	
+	//Los gett and sett
 	public String getIdProyecto() {
 		return idProyecto;
 	}
-
 	public void setIdProyecto(String idProyecto) {
 		this.idProyecto = idProyecto;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	public Date getFechaInicio() {
 		return fechaInicio;
 	}
-
 	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-
 	public Date getFechaFinPrevisto() {
 		return fechaFinPrevisto;
 	}
-
 	public void setFechaFinPrevisto(Date fechaFinPrevisto) {
 		this.fechaFinPrevisto = fechaFinPrevisto;
 	}
-
 	public Date getFechaFinReal() {
 		return fechaFinReal;
 	}
-
 	public void setFechaFinReal(Date fechaFinReal) {
 		this.fechaFinReal = fechaFinReal;
 	}
-
-	public double getVentasPrevisto() {
-		return ventasPrevisto;
+	public double getVentaPrevisto() {
+		return ventaPrevisto;
 	}
-
-	public void setVentasPrevisto(double ventasPrevisto) {
-		this.ventasPrevisto = ventasPrevisto;
+	public void setVentaPrevisto(double ventaPrevisto) {
+		this.ventaPrevisto = ventaPrevisto;
 	}
-
 	public double getCostesPrevisto() {
 		return costesPrevisto;
 	}
-
 	public void setCostesPrevisto(double costesPrevisto) {
 		this.costesPrevisto = costesPrevisto;
 	}
-
 	public double getCosteReal() {
 		return costeReal;
 	}
-
 	public void setCosteReal(double costeReal) {
 		this.costeReal = costeReal;
 	}
-
 	public String getEstado() {
 		return estado;
 	}
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
-	public Empleado getJefeProyecto() {
-		return jefeProyecto;
+	public Empleado getEmpleado() {
+		return empleado;
 	}
-
-	public void setJefeProyecto(Empleado jefeProyecto) {
-		this.jefeProyecto = jefeProyecto;
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
-
 	public Cliente getCliente() {
 		return cliente;
 	}
-
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-	// Generamos equals y hashcode, en los cuales definimos que dos proyectos son
-	// iguales si tienen el mismo idProyecto
+	
+	//Sobreescribimos con toSring
+	@Override
+	public String toString() {
+		return "Proyecto [idProyecto=" + idProyecto + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio
+				+ ", fechaFinPrevisto=" + fechaFinPrevisto + ", fechaFinReal=" + fechaFinReal + ", ventaPrevisto="
+				+ ventaPrevisto + ", costesPrevisto=" + costesPrevisto + ", costeReal=" + costeReal + ", estado="
+				+ estado + ", empleado=" + empleado + ", cliente=" + cliente + "]";
+	}
+	
+	//El hashcode y equals solo para el idProyecto
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProyecto);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -152,24 +144,46 @@ public class Proyecto {
 		return Objects.equals(idProyecto, other.idProyecto);
 	}
 
-	// Metodos propios de proyectos
+
+	// Metodos propios de la clase proyectos
 
 	// Definimos el metodo que calcula y retorna el margen de las ganancias.
 
 	public double margenPrevisto() {
-		Factura factura = new Factura();
-		double importeVenta = 0;
-		double margen = importeVenta - costesPrevisto;
-
-		return margen;
+		double mprev ;
+		
+               mprev =ventaPrevisto-costesPrevisto;
+		return mprev;
 	}
 
 	public double margenReal() {
 		Factura factura = new Factura();
-		double importeVenta = 0;
-		double mreal = importeVenta - costeReal;
+		double mreal ;
+		
+	     mreal = ventaPrevisto - costeReal;
 
 		return mreal;
 	}
-  
-}
+    public double diferenciGastos()   {
+    	double gasto;
+    	
+        gasto = costeReal- costesPrevisto;
+    	
+    	return gasto;
+    }
+    
+    
+       //el metodo que da el numero de dia entre la fecha actual y el fin previsto del proyecto
+        public int diferenciFinPrevisto()   {
+    	
+        	LocalDate fecha1 = fechaFinPrevisto.toLocalDate();
+        	LocalDate fecha2 = fechaFinReal.toLocalDate();
+    	    long DiferenciaDias = ChronoUnit.DAYS.between(fecha1 ,fecha2);
+    	    int difdias = Long.valueOf(DiferenciaDias).intValue();
+    	    return difdias;
+       
+	
+
+    }
+
+}	
